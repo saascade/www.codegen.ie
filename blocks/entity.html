@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entity Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Entity Block</h1>
+      <p>An entity is a domain object that has identity over time.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="aggregate.html">Aggregate</a></li>
+          <li><a href="value-object.html">Value Object</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use an Entity block for something inside an aggregate that must be tracked as the same thing over time. An order line, shipment stop, appointment attendee, or claim evidence item can be an entity when its identity matters.</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Name:</strong> domain noun.</li>
+          <li><strong>Parent aggregate:</strong> aggregate that owns the entity.</li>
+          <li><strong>Identity:</strong> how this entity is distinguished from others.</li>
+          <li><strong>Attributes:</strong> descriptive fields needed by rules or events.</li>
+          <li><strong>Lifecycle:</strong> created, updated, removed, activated, completed, or cancelled states if relevant.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Rules:</strong> invariants involving this entity.</li>
+          <li><strong>Events affected:</strong> domain events that include this entity’s facts.</li>
+          <li><strong>Visibility:</strong> whether it appears in read models or stays internal to the aggregate.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Entity Or Value Object?</h2>
+        <p>If identity matters, use an entity. If only the values matter, use a value object. A specific shipment stop with a scan history may be an entity. A delivery address may be a value object unless the business tracks that address record as its own thing.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next block: <a href="value-object.html">Value Object</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

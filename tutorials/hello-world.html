@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hello World Example | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Hello World Example</h1>
+      <p>Use this tiny example to learn the shape of a Code Genie model without domain complexity.</p>
+      <nav aria-label="Tutorial navigation">
+        <ul>
+          <li><a href="index.html">Tutorials</a></li>
+          <li><a href="../blocks/actor.html">Actor block</a></li>
+          <li><a href="../blocks/command.html">Command block</a></li>
+          <li><a href="../blocks/domain-event.html">Domain Event block</a></li>
+          <li><a href="../blocks/read-model.html">Read Model block</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Scenario</h2>
+        <p>A user opens a page, enters a name, and the generated system returns a greeting. This is not a DDD showcase. It is a friendly smoke test for commands, events, read models, and generation.</p>
+      </section>
+
+      <section>
+        <h2>Canvas Blocks</h2>
+        <ul>
+          <li><strong>Actor:</strong> Visitor.</li>
+          <li><strong>User Interface:</strong> Greeting Page.</li>
+          <li><strong>Command:</strong> Say Hello.</li>
+          <li><strong>Aggregate:</strong> Greeting.</li>
+          <li><strong>Domain Event:</strong> Greeting Requested.</li>
+          <li><strong>Read Model:</strong> Greeting Message.</li>
+          <li><strong>Query:</strong> Show Greeting Message.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Command Configuration</h2>
+        <ul>
+          <li><strong>Name:</strong> Say Hello.</li>
+          <li><strong>Input fields:</strong> visitorName.</li>
+          <li><strong>Validation:</strong> visitorName is required and must be short enough to display.</li>
+          <li><strong>Target aggregate:</strong> Greeting.</li>
+          <li><strong>Success event:</strong> Greeting Requested.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Event Configuration</h2>
+        <ul>
+          <li><strong>Name:</strong> Greeting Requested.</li>
+          <li><strong>Payload:</strong> greetingId, visitorName, requestedAt.</li>
+          <li><strong>Business meaning:</strong> a visitor asked the system to create a greeting.</li>
+          <li><strong>Read model updated:</strong> Greeting Message.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Read Model Configuration</h2>
+        <ul>
+          <li><strong>Name:</strong> Greeting Message.</li>
+          <li><strong>Fields:</strong> greetingId, message, requestedAt.</li>
+          <li><strong>Projection rule:</strong> when Greeting Requested happens, set message to “Hello, {visitorName}.”</li>
+          <li><strong>Query:</strong> Show Greeting Message by greetingId.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Generated Behaviour</h2>
+        <ol>
+          <li>Visitor opens Greeting Page.</li>
+          <li>Visitor submits Say Hello with a name.</li>
+          <li>Greeting aggregate accepts the command.</li>
+          <li>Greeting Requested is recorded.</li>
+          <li>Greeting Message read model displays the generated greeting.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>What This Teaches</h2>
+        <p>Hello World shows the basic generation loop: actor, interface, command, aggregate, event, projection, query, and read model. Real business systems use the same shape, but with richer rules and consequences.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Back to Tutorials: <a href="index.html">Tutorials</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

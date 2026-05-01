@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invariant Or Business Rule Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Invariant Or Business Rule Block</h1>
+      <p>An invariant is a rule that must remain true for the model to be valid.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="aggregate.html">Aggregate</a></li>
+          <li><a href="command.html">Command</a></li>
+          <li><a href="policy.html">Policy</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use this block when a rule is important enough to make visible on the canvas. Some rules belong inside an aggregate because they must be enforced immediately. Others belong in policies because they describe follow-up behaviour.</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Name:</strong> short rule label, such as <strong>No Double Booking</strong>.</li>
+          <li><strong>Rule statement:</strong> precise business wording.</li>
+          <li><strong>Scope:</strong> aggregate, policy, bounded context, integration, or user interface.</li>
+          <li><strong>Enforcement point:</strong> command validation, aggregate decision, policy condition, or external check.</li>
+          <li><strong>Failure outcome:</strong> rejection reason, escalation, compensation, or manual review.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Examples:</strong> accepted and rejected scenarios.</li>
+          <li><strong>Owner:</strong> domain expert or team who can change the rule.</li>
+          <li><strong>Source:</strong> policy document, contract, law, internal standard, or domain expert decision.</li>
+          <li><strong>Change frequency:</strong> rare, seasonal, frequent, experimental.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Examples</h2>
+        <ul>
+          <li>An appointment slot cannot be assigned to two active appointments.</li>
+          <li>A refund cannot exceed the captured payment amount.</li>
+          <li>A claim cannot be approved without required evidence unless a supervisor override is recorded.</li>
+          <li>A subscription cannot have more active seats than its plan allows.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next block: <a href="entity.html">Entity</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generate And Host A System | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Generate And Host A System</h1>
+      <p>Use this workflow after the model has enough detail to become generated software.</p>
+      <nav aria-label="Tutorial navigation">
+        <ul>
+          <li><a href="index.html">Tutorials</a></li>
+          <li><a href="../reference/model-review-checklist.html">Review checklist</a></li>
+          <li><a href="../blocks/bounded-context.html">Bounded Context block</a></li>
+          <li><a href="../reference/faq.html">FAQ</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Before You Generate</h2>
+        <p>Generation works best when the model is explicit. Review command ownership, aggregate boundaries, event payloads, policies, read models, interfaces, and unresolved hotspots.</p>
+        <ul>
+          <li>Every command has an initiator, target aggregate, required input, and success event.</li>
+          <li>Every aggregate has identity, handled commands, emitted events, and invariants.</li>
+          <li>Every policy has a trigger, condition, and resulting command.</li>
+          <li>Every user-facing task has a read model and query.</li>
+          <li>Every integration boundary has a contract owner and failure handling.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Step 1: Choose Generation Scope</h2>
+        <p>Select the bounded context, workflow, or full canvas area to generate. Start with one bounded context when the model is large. Smaller generation scope makes review and iteration easier.</p>
+      </section>
+
+      <section>
+        <h2>Step 2: Select Architecture Options</h2>
+        <ul>
+          <li><strong>Persistence style:</strong> current-state, event-sourced, or mixed by aggregate.</li>
+          <li><strong>CQRS depth:</strong> simple command/query split, separate read models, or event-fed projections.</li>
+          <li><strong>Interface generation:</strong> APIs, admin pages, portals, dashboards, or workflow screens.</li>
+          <li><strong>Integration style:</strong> webhooks, message bus, REST API, file exchange, or manual import/export.</li>
+          <li><strong>Hosting target:</strong> local project, customer-managed infrastructure, or SAAScade Cloud.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Step 3: Resolve Warnings</h2>
+        <p>Code Genie may warn about disconnected blocks, missing event payloads, ambiguous command names, policy loops, oversized aggregates, unresolved hotspots, or integration events without subscribers. Resolve generation blockers before creating production code.</p>
+      </section>
+
+      <section>
+        <h2>Step 4: Generate Code</h2>
+        <p>Generate the application structure. Review generated commands, domain events, aggregate tests, read models, user interfaces, and integration contracts. Treat the first generation as a design review artifact as much as a code artifact.</p>
+      </section>
+
+      <section>
+        <h2>Step 5: Configure Environments</h2>
+        <ul>
+          <li><strong>Development:</strong> rapid iteration and local validation.</li>
+          <li><strong>Test:</strong> business acceptance, integration tests, and review of generated workflows.</li>
+          <li><strong>Production:</strong> locked configuration, monitoring, backup, audit, and access controls.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Step 6: Deploy To SAAScade Cloud</h2>
+        <p>When you choose SAAScade Cloud, Code Genie can host the generated system for you. Confirm the application name, region, environments, identity configuration, database settings, secrets, integrations, and operational contacts before deployment.</p>
+        <p>After deployment, validate the generated application with real scenarios from the canvas: submit commands, confirm events, inspect read models, test policies, and verify external integrations.</p>
+      </section>
+
+      <section>
+        <h2>Step 7: Keep The Canvas Alive</h2>
+        <p>The canvas should remain the source of product and architecture intent. When the business changes, update the model, review the impact, regenerate the affected area, and keep the generated system aligned with the shared language.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: <a href="../scenarios/software-system-types.html">Types of software systems you can design</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

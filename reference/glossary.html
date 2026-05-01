@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glossary | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Glossary</h1>
+      <p>Definitions for the terms used across Code Genie, Domain-Driven Design, EventStorming, CQRS, and Event Sourcing.</p>
+      <nav aria-label="Reference navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../blocks/index.html">Building blocks</a></li>
+          <li><a href="naming.html">Naming guide</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="sources.html">Sources</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>A</h2>
+        <h3>Actor</h3>
+        <p>A role, team, organization, person type, or system role that initiates commands or asks queries.</p>
+        <h3>Aggregate</h3>
+        <p>A consistency boundary that receives commands, enforces invariants, and emits domain events. An aggregate is not simply a database table.</p>
+        <h3>Aggregate Root</h3>
+        <p>The main entity through which outside code interacts with an aggregate. Commands should target the aggregate root rather than changing child entities directly.</p>
+      </section>
+
+      <section>
+        <h2>B</h2>
+        <h3>Bounded Context</h3>
+        <p>A boundary where a model and its language have a clear meaning. Different contexts can use the same word differently.</p>
+        <h3>Business Rule</h3>
+        <p>A rule from the domain that constrains what the system may do.</p>
+      </section>
+
+      <section>
+        <h2>C</h2>
+        <h3>Command</h3>
+        <p>An intent to change the system, named as an imperative verb phrase such as <strong>Approve Claim</strong>.</p>
+        <h3>Command Handler</h3>
+        <p>The generated application layer code that receives a command and coordinates validation, aggregate loading, decision execution, and persistence.</p>
+        <h3>Compensation</h3>
+        <p>A follow-up action that mitigates a previous step when a long-running process cannot complete as planned.</p>
+        <h3>CQRS</h3>
+        <p>Command Query Responsibility Segregation. A design approach that separates operations that change state from operations that read state.</p>
+        <h3>CRUD</h3>
+        <p>Create, read, update, and delete. A good fit for simple record maintenance systems.</p>
+      </section>
+
+      <section>
+        <h2>D</h2>
+        <h3>Domain</h3>
+        <p>The business area the software supports, such as insurance claims, subscription billing, logistics dispatch, or appointment scheduling.</p>
+        <h3>Domain Event</h3>
+        <p>A meaningful business fact that happened, named in the past tense, such as <strong>Payment Authorized</strong>.</p>
+        <h3>Domain Expert</h3>
+        <p>A person who understands the business rules, language, exceptions, and real-world process.</p>
+        <h3>Domain-Driven Design</h3>
+        <p>A software design approach that models complex business domains around language, boundaries, and behaviour.</p>
+      </section>
+
+      <section>
+        <h2>E</h2>
+        <h3>Entity</h3>
+        <p>A domain object with identity over time.</p>
+        <h3>Event Sourcing</h3>
+        <p>A persistence style where meaningful events are stored as the record of change, and current state can be derived from those events.</p>
+        <h3>EventStorming</h3>
+        <p>A collaborative modelling approach that explores a domain by discovering events, commands, policies, actors, systems, and boundaries.</p>
+        <h3>External System</h3>
+        <p>A system outside the generated boundary that exchanges data, commands, or events with the modelled system.</p>
+      </section>
+
+      <section>
+        <h2>H</h2>
+        <h3>Hotspot</h3>
+        <p>A visible question, uncertainty, risk, disagreement, or missing decision on the canvas.</p>
+      </section>
+
+      <section>
+        <h2>I</h2>
+        <h3>Idempotency</h3>
+        <p>The ability to handle duplicate commands or messages without applying the same business effect twice.</p>
+        <h3>Integration Event</h3>
+        <p>An event intentionally published across a system or bounded-context boundary.</p>
+        <h3>Invariant</h3>
+        <p>A rule that must remain true inside a boundary, usually enforced by an aggregate.</p>
+      </section>
+
+      <section>
+        <h2>P</h2>
+        <h3>Policy</h3>
+        <p>An event-driven rule that reacts to something that happened and may trigger a command.</p>
+        <h3>Projection</h3>
+        <p>The process or generated handler that updates a read model from events.</p>
+      </section>
+
+      <section>
+        <h2>Q</h2>
+        <h3>Query</h3>
+        <p>A request for information that does not change business state.</p>
+      </section>
+
+      <section>
+        <h2>R</h2>
+        <h3>Read Model</h3>
+        <p>Information shaped for a screen, query, report, policy, dashboard, or integration.</p>
+      </section>
+
+      <section>
+        <h2>S</h2>
+        <h3>SAAScade Cloud</h3>
+        <p>The hosted environment where Code Genie can deploy generated systems for teams that want managed hosting.</p>
+        <h3>Saga</h3>
+        <p>A long-running workflow coordinator that tracks steps across events, commands, time, and systems.</p>
+      </section>
+
+      <section>
+        <h2>U</h2>
+        <h3>Ubiquitous Language</h3>
+        <p>The shared vocabulary used by domain experts, product teams, architects, and developers.</p>
+      </section>
+
+      <section>
+        <h2>V</h2>
+        <h3>Value Object</h3>
+        <p>A descriptive object defined by its values rather than identity, such as Money, Address, Date Range, or Email Address.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: <a href="faq.html">FAQ</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

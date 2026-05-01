@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Model A Simple CRUD Back-Office Tool | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Model A Simple CRUD Back-Office Tool</h1>
+      <p>This tutorial shows when a simple CRUD model is the right choice.</p>
+      <nav aria-label="Tutorial navigation">
+        <ul>
+          <li><a href="index.html">Tutorials</a></li>
+          <li><a href="../concepts/crud-vs-ddd.html">CRUD vs DDD</a></li>
+          <li><a href="../scenarios/crud-examples.html">CRUD examples</a></li>
+          <li><a href="../blocks/query.html">Query block</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Scenario</h2>
+        <p>A company needs an internal supplier directory. Users create suppliers, edit contact information, archive inactive suppliers, and search by region or capability. There are no complex lifecycle rules.</p>
+      </section>
+
+      <section>
+        <h2>Blocks</h2>
+        <ul>
+          <li><strong>Aggregate or record:</strong> Supplier.</li>
+          <li><strong>Value objects:</strong> Postal Address, Email Address, Phone Number.</li>
+          <li><strong>Commands:</strong> Create Supplier, Update Supplier, Archive Supplier.</li>
+          <li><strong>Events:</strong> Supplier Created, Supplier Updated, Supplier Archived.</li>
+          <li><strong>Read models:</strong> Supplier Search Result, Supplier Detail.</li>
+          <li><strong>Queries:</strong> Search Suppliers, Get Supplier Detail.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Rules</h2>
+        <ul>
+          <li>Supplier name is required.</li>
+          <li>Tax identifier must be unique when provided.</li>
+          <li>Archived suppliers do not appear in default search results.</li>
+          <li>Only Procurement Admin can archive a supplier.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Why This Stays CRUD</h2>
+        <p>The model has useful validation, permissions, and audit events, but it does not have a rich business lifecycle. A CRUD-style generated system is likely clearer and cheaper to maintain than a forced DDD design.</p>
+      </section>
+
+      <section>
+        <h2>Where DDD Might Begin</h2>
+        <p>If the supplier process grows to include onboarding, due diligence, risk review, contract negotiation, compliance renewal, and suspension, create a richer Supplier Onboarding context. Then model commands such as <strong>Start Due Diligence</strong>, <strong>Approve Supplier</strong>, and <strong>Suspend Supplier</strong>.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next tutorial: <a href="generate-and-host.html">Generate and host a system</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

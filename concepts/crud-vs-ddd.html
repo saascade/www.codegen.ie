@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRUD Systems And DDD Systems | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>CRUD Systems And DDD Systems</h1>
+      <p>Code Genie can design simple CRUD systems, but the real power of DDD appears when you model business behaviour instead of only data maintenance.</p>
+      <nav aria-label="Concept navigation">
+        <ul>
+          <li><a href="index.html">Concepts</a></li>
+          <li><a href="../scenarios/crud-examples.html">CRUD examples</a></li>
+          <li><a href="../scenarios/ddd-examples.html">DDD examples</a></li>
+          <li><a href="../blocks/index.html">Building blocks</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>CRUD Style</h2>
+        <p>CRUD means create, read, update, and delete. It works well when the main goal is to manage records and the business rules are minimal.</p>
+        <h3>Example: Supplier Directory</h3>
+        <ul>
+          <li>Records: Supplier, Contact, Address, Certification.</li>
+          <li>Commands: Create Supplier, Update Supplier, Delete Supplier.</li>
+          <li>Queries: Search Suppliers, View Supplier Details.</li>
+          <li>Events: Supplier Created, Supplier Updated, Supplier Deleted.</li>
+        </ul>
+        <h3>Example: Product Reference Catalogue</h3>
+        <ul>
+          <li>Records: Product, Category, Attribute, Price List.</li>
+          <li>Commands: Add Product, Update Product, Archive Product.</li>
+          <li>Queries: Browse Products, Export Product List.</li>
+          <li>Events: Product Added, Product Updated, Product Archived.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>DDD Style</h2>
+        <p>DDD style focuses on decisions, workflows, invariants, and business language. The model explains why the system changes, not only that a row changed.</p>
+        <h3>Example: Order Fulfilment</h3>
+        <ul>
+          <li>Commands: Place Order, Authorize Payment, Reserve Inventory, Release Shipment.</li>
+          <li>Events: Order Placed, Payment Authorized, Inventory Reserved, Shipment Released.</li>
+          <li>Aggregates: Order, Payment Authorization, Inventory Reservation, Shipment.</li>
+          <li>Policies: Reserve inventory when payment is authorized; release shipment when all items are available.</li>
+        </ul>
+        <h3>Example: Insurance Claims</h3>
+        <ul>
+          <li>Commands: Open Claim, Request Evidence, Approve Claim, Issue Payment.</li>
+          <li>Events: Claim Opened, Evidence Requested, Claim Approved, Payment Issued.</li>
+          <li>Aggregates: Claim, Policy, Assessment, Claim Payment.</li>
+          <li>Policies: Request assessor review when claimed amount exceeds threshold; notify repair partner when claim is approved.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>How To Choose</h2>
+        <ul>
+          <li>Choose CRUD when users mostly maintain reference records.</li>
+          <li>Choose DDD when users perform business tasks with rules and consequences.</li>
+          <li>Choose DDD when one action can trigger several events, policies, integrations, or follow-up tasks.</li>
+          <li>Choose DDD when the business cares about the story of what happened.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>A Useful Compromise</h2>
+        <p>Many real systems contain both. For example, a logistics product may have CRUD-style vehicle maintenance screens and DDD-style dispatch, routing, exception handling, and proof-of-delivery flows. Model the simple parts simply and spend design energy where business behaviour matters.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: <a href="../blocks/index.html">Canvas building blocks</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

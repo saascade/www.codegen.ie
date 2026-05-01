@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your First EventStorming Model | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Your First EventStorming Model</h1>
+      <p>Build a small but useful model for an appointment booking process.</p>
+      <nav aria-label="Tutorial navigation">
+        <ul>
+          <li><a href="index.html">Tutorials</a></li>
+          <li><a href="../concepts/eventstorming.html">EventStorming concept</a></li>
+          <li><a href="../blocks/domain-event.html">Domain Event block</a></li>
+          <li><a href="../blocks/command.html">Command block</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Scenario</h2>
+        <p>A clinic wants patients to book appointments online. The clinic must prevent double-booking, allow rescheduling, and notify patients when an appointment changes.</p>
+      </section>
+
+      <section>
+        <h2>Step 1: Add Domain Events</h2>
+        <p>Place these events from left to right:</p>
+        <ul>
+          <li>Appointment Slot Published</li>
+          <li>Appointment Scheduled</li>
+          <li>Appointment Rescheduled</li>
+          <li>Appointment Cancelled</li>
+          <li>Patient Notified</li>
+        </ul>
+        <p>Add a hotspot on <strong>Patient Notified</strong> if the team is unsure whether notifications are email, SMS, portal, or all three.</p>
+      </section>
+
+      <section>
+        <h2>Step 2: Add Commands</h2>
+        <p>Add commands before the events they may produce:</p>
+        <ul>
+          <li>Publish Appointment Slot produces Appointment Slot Published.</li>
+          <li>Schedule Appointment produces Appointment Scheduled.</li>
+          <li>Reschedule Appointment produces Appointment Rescheduled.</li>
+          <li>Cancel Appointment produces Appointment Cancelled.</li>
+          <li>Send Patient Notification produces Patient Notified.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Step 3: Add Actors And Interfaces</h2>
+        <ul>
+          <li><strong>Clinic Scheduler</strong> uses <strong>Scheduling Admin</strong> to publish slots.</li>
+          <li><strong>Patient</strong> uses <strong>Patient Booking Portal</strong> to schedule, reschedule, and cancel appointments.</li>
+          <li><strong>Notification Service</strong> may be an external system if Code Genie will integrate with an existing provider.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Step 4: Add Aggregates And Rules</h2>
+        <p>Add an <strong>Appointment</strong> aggregate and an <strong>Appointment Slot</strong> aggregate. Then add these rules:</p>
+        <ul>
+          <li>A slot cannot have two active appointments.</li>
+          <li>An appointment cannot be rescheduled after its start time.</li>
+          <li>A cancelled appointment cannot be rescheduled.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Step 5: Add Policies</h2>
+        <ul>
+          <li>When Appointment Scheduled, send patient notification.</li>
+          <li>When Appointment Rescheduled, send patient notification.</li>
+          <li>When Appointment Cancelled, release the appointment slot.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Step 6: Add Read Models And Queries</h2>
+        <ul>
+          <li><strong>Available Appointment Slots</strong> supports Find Available Slots.</li>
+          <li><strong>Patient Appointment Summary</strong> supports View My Appointments.</li>
+          <li><strong>Clinic Schedule</strong> supports View Daily Schedule.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Review</h2>
+        <p>The model is ready for review when every command has an initiator, an aggregate, and a success event; every policy has a trigger and result; and every important user decision has a read model.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next tutorial: <a href="order-fulfilment.html">Model order fulfilment</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

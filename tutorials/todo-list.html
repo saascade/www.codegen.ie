@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TODO Example | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>TODO Example</h1>
+      <p>Use this example to model a simple TODO list and see where CRUD ends and behaviour starts.</p>
+      <nav aria-label="Tutorial navigation">
+        <ul>
+          <li><a href="index.html">Tutorials</a></li>
+          <li><a href="../concepts/crud-vs-ddd.html">CRUD vs DDD</a></li>
+          <li><a href="../blocks/command.html">Command block</a></li>
+          <li><a href="../blocks/aggregate.html">Aggregate block</a></li>
+          <li><a href="../blocks/policy.html">Policy block</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Scenario</h2>
+        <p>A user wants to create tasks, mark them complete, reopen them, and view what is still due. A basic TODO system is mostly CRUD, but deadlines, reminders, assignment, and review rules can turn it into a small workflow system.</p>
+      </section>
+
+      <section>
+        <h2>Simple CRUD Version</h2>
+        <ul>
+          <li><strong>Actor:</strong> User.</li>
+          <li><strong>User Interface:</strong> TODO List.</li>
+          <li><strong>Record or aggregate:</strong> Todo Item.</li>
+          <li><strong>Commands:</strong> Create Todo Item, Update Todo Item, Delete Todo Item.</li>
+          <li><strong>Events:</strong> Todo Item Created, Todo Item Updated, Todo Item Deleted.</li>
+          <li><strong>Read models:</strong> Todo List, Todo Item Detail.</li>
+          <li><strong>Queries:</strong> Show Open Todo Items, Show Completed Todo Items, Search Todo Items.</li>
+        </ul>
+        <p>This version is enough when TODO items are just personal notes with a title, optional due date, status, and description.</p>
+      </section>
+
+      <section>
+        <h2>Behaviour-Rich Version</h2>
+        <p>Use more specific commands when TODO items have meaningful state transitions.</p>
+        <ul>
+          <li><strong>Commands:</strong> Add Todo Item, Prioritize Todo Item, Assign Todo Item, Complete Todo Item, Reopen Todo Item, Defer Todo Item.</li>
+          <li><strong>Events:</strong> Todo Item Added, Todo Item Prioritized, Todo Item Assigned, Todo Item Completed, Todo Item Reopened, Todo Item Deferred.</li>
+          <li><strong>Aggregate:</strong> Todo Item.</li>
+          <li><strong>Policies:</strong> send reminder when due date approaches; notify assignee when item assigned; escalate overdue high-priority item.</li>
+          <li><strong>Read models:</strong> My Open Todo Items, Team Todo Board, Overdue Todo Items, Completed Todo History.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Aggregate Rules</h2>
+        <ul>
+          <li>A completed TODO item cannot be completed again.</li>
+          <li>A deleted TODO item cannot be reopened.</li>
+          <li>A TODO item cannot be assigned to an inactive user.</li>
+          <li>A due date cannot be earlier than the creation date.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Command Details</h2>
+        <h3>Add Todo Item</h3>
+        <ul>
+          <li><strong>Input fields:</strong> title, description, dueDate, priority.</li>
+          <li><strong>Validation:</strong> title is required.</li>
+          <li><strong>Success event:</strong> Todo Item Added.</li>
+        </ul>
+        <h3>Complete Todo Item</h3>
+        <ul>
+          <li><strong>Input fields:</strong> todoItemId, completedBy, completedAt.</li>
+          <li><strong>Validation:</strong> item exists and is open.</li>
+          <li><strong>Success event:</strong> Todo Item Completed.</li>
+          <li><strong>Rejection reasons:</strong> item is already completed, deleted, or not visible to the user.</li>
+        </ul>
+        <h3>Reopen Todo Item</h3>
+        <ul>
+          <li><strong>Input fields:</strong> todoItemId, reopenedBy, reason.</li>
+          <li><strong>Validation:</strong> item is completed and not deleted.</li>
+          <li><strong>Success event:</strong> Todo Item Reopened.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Read Models</h2>
+        <ul>
+          <li><strong>My Open Todo Items:</strong> title, due date, priority, assigned user, age, next action.</li>
+          <li><strong>Overdue Todo Items:</strong> title, owner, due date, priority, escalation status.</li>
+          <li><strong>Completed Todo History:</strong> title, completed by, completed at, cycle time.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>When To Keep It Simple</h2>
+        <p>If users only need to add, edit, complete, and delete personal tasks, the CRUD version is ideal. Use the behaviour-rich version when TODO items involve assignment, reminders, audit history, escalation, team accountability, or reporting.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next tutorial: <a href="first-event-storm.html">Your first EventStorming model</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

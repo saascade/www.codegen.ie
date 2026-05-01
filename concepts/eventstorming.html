@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EventStorming | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>EventStorming On An Infinite Canvas</h1>
+      <p>EventStorming is a collaborative way to explore a business domain by modelling the important things that happen, the actions that cause them, and the rules that connect them.</p>
+      <nav aria-label="Concept navigation">
+        <ul>
+          <li><a href="index.html">Concepts</a></li>
+          <li><a href="../tutorials/first-event-storm.html">First EventStorming tutorial</a></li>
+          <li><a href="../blocks/domain-event.html">Domain Event block</a></li>
+          <li><a href="../blocks/command.html">Command block</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Why Code Genie Starts With Events</h2>
+        <p>Events are shared facts. People from different roles can usually agree that <strong>Payment Received</strong>, <strong>Claim Approved</strong>, or <strong>Vehicle Assigned</strong> happened, even if they disagree about implementation. That makes events a strong starting point for discovery.</p>
+        <p>On a Code Genie canvas, event modelling is not disposable workshop output. It becomes input to generated software, documentation, test cases, and hosted workflows.</p>
+      </section>
+
+      <section>
+        <h2>Typical Flow</h2>
+        <ol>
+          <li>Place domain events in rough timeline order.</li>
+          <li>Add hotspots where the team has questions, disagreements, risk, or missing knowledge.</li>
+          <li>Add commands that cause events.</li>
+          <li>Add actors and user interfaces that issue commands.</li>
+          <li>Add aggregates that decide whether commands are valid.</li>
+          <li>Add policies that react to events and trigger more commands.</li>
+          <li>Add read models and queries that provide decision-making information.</li>
+          <li>Group related model areas into bounded contexts.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Common Block Colours</h2>
+        <p>Teams often use colours from EventStorming practice, such as orange for events, blue for commands, yellow for aggregates, purple for policies, pink for external systems, and green for read models or information. Code Genie may let a workspace customize colours, but the meaning of each block is more important than the colour.</p>
+        <figure>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Event_storming_layout.png" alt="EventStorming layout diagram showing events, commands, actors, aggregates, policies, and external systems" width="275" height="264">
+          <figcaption>Example EventStorming layout image by Frap, available from Wikimedia Commons under CC BY-SA 4.0.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Big Picture, Process, and Software Design</h2>
+        <p>Use the same canvas at different levels of detail.</p>
+        <ul>
+          <li><strong>Big picture</strong> explores a wide business area, discovers major events, and reveals boundaries.</li>
+          <li><strong>Process modelling</strong> follows one workflow in more detail, including actors, decisions, and handoffs.</li>
+          <li><strong>Software design</strong> refines commands, aggregates, policies, read models, integration events, and generation settings.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Workshop Habits That Improve Generation</h2>
+        <ul>
+          <li>Name events in the past tense.</li>
+          <li>Name commands as imperative actions.</li>
+          <li>Keep business language visible; do not let technical labels take over too early.</li>
+          <li>Mark unknowns as hotspots instead of silently guessing.</li>
+          <li>Connect every generated command to an actor, interface, policy, or integration source.</li>
+          <li>Review aggregate boundaries before code generation.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: <a href="cqrs.html">CQRS without ceremony</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

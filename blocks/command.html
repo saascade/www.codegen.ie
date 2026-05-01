@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Command Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Command Block</h1>
+      <p>A command represents an intent to change the system. It may succeed, fail validation, or be rejected by business rules.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="domain-event.html">Domain Event</a></li>
+          <li><a href="aggregate.html">Aggregate</a></li>
+          <li><a href="actor.html">Actor</a></li>
+          <li><a href="user-interface.html">User Interface</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use a Command block when a user, policy, integration, or scheduled process asks the system to do something that may change business state: <strong>Approve Claim</strong>, <strong>Reserve Inventory</strong>, <strong>Change Subscription Plan</strong>, <strong>Assign Driver</strong>.</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Name:</strong> imperative verb phrase, such as <strong>Cancel Order</strong>.</li>
+          <li><strong>Initiator:</strong> actor, policy, external system, or schedule that issues the command.</li>
+          <li><strong>Target aggregate:</strong> aggregate that decides whether the command is allowed.</li>
+          <li><strong>Input fields:</strong> data required to make the decision.</li>
+          <li><strong>Success event or events:</strong> events emitted when the command succeeds.</li>
+          <li><strong>Rejection reasons:</strong> business reasons the command may not be accepted.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Authorization rule:</strong> who is allowed to issue it.</li>
+          <li><strong>Idempotency key:</strong> how duplicate command submissions should be handled.</li>
+          <li><strong>Validation rules:</strong> required fields, ranges, formats, and cross-field checks.</li>
+          <li><strong>Expected latency:</strong> immediate, background, scheduled, or externally dependent.</li>
+          <li><strong>User feedback:</strong> success message, rejection message, and next visible state.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Connections</h2>
+        <ul>
+          <li>Usually starts from an <a href="actor.html">Actor</a>, <a href="user-interface.html">User Interface</a>, <a href="policy.html">Policy</a>, or <a href="external-system.html">External System</a>.</li>
+          <li>Should be handled by one primary <a href="aggregate.html">Aggregate</a>.</li>
+          <li>Should produce at least one <a href="domain-event.html">Domain Event</a> when successful.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Examples</h2>
+        <h3>Business Commands</h3>
+        <ul>
+          <li>Place Order</li>
+          <li>Approve Expense Report</li>
+          <li>Open Insurance Claim</li>
+          <li>Schedule Patient Appointment</li>
+          <li>Allocate Driver To Route</li>
+        </ul>
+        <h3>CRUD Commands</h3>
+        <ul>
+          <li>Create Supplier</li>
+          <li>Update Product</li>
+          <li>Archive Cost Centre</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Generation Notes</h2>
+        <p>Code Genie uses command definitions to generate command contracts, handlers, validation paths, application services, authorization hooks, and user interface actions. Avoid commands named after database operations unless you are intentionally designing CRUD.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next block: <a href="aggregate.html">Aggregate</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQ | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>FAQ</h1>
+      <p>Answers to common questions about modelling, generation, DDD, CQRS, Event Sourcing, and SAAScade Cloud.</p>
+      <nav aria-label="Reference navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../getting-started.html">Getting started</a></li>
+          <li><a href="../blocks/index.html">Building blocks</a></li>
+          <li><a href="model-review-checklist.html">Review checklist</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Product Questions</h2>
+        <h3>What is Code Genie?</h3>
+        <p>Code Genie is a digital whiteboarding and code generation tool for visually designing software systems with DDD, EventStorming, CQRS, and Event Sourcing concepts.</p>
+        <h3>Who is it for?</h3>
+        <p>It is for software architects, product managers, developers, domain experts, and teams that need a shared model before generating or implementing software.</p>
+        <h3>Do users need to know deep technical patterns?</h3>
+        <p>No. Users should understand the business meaning of commands, events, aggregates, policies, and read models. Code Genie handles much of the technical implementation detail during generation.</p>
+      </section>
+
+      <section>
+        <h2>Modelling Questions</h2>
+        <h3>Should I start with commands or events?</h3>
+        <p>Start with events when discovering a process. Events are business facts and tend to be easier for mixed teams to agree on. Add commands after the team understands what happened.</p>
+        <h3>How do I know if something is a command or an event?</h3>
+        <p>A command asks the system to do something. An event says something happened. <strong>Approve Claim</strong> is a command. <strong>Claim Approved</strong> is an event.</p>
+        <h3>How big should an aggregate be?</h3>
+        <p>Large enough to protect the rules that must be consistent together, but not so large that it becomes a whole department. If unrelated commands pile into one aggregate, look for smaller boundaries.</p>
+        <h3>When should I use a policy?</h3>
+        <p>Use a policy when an event should trigger follow-up behaviour, especially automated behaviour that might otherwise be hidden in implementation.</p>
+      </section>
+
+      <section>
+        <h2>CRUD Questions</h2>
+        <h3>Can Code Genie generate CRUD systems?</h3>
+        <p>Yes. Code Genie can design and generate CRUD-style systems for simple record management. Use CRUD when the system mostly creates, reads, updates, and archives simple records.</p>
+        <h3>Is CRUD bad?</h3>
+        <p>No. CRUD is appropriate for many admin tools and reference data systems. The caution is that CRUD is weak when it hides important business decisions, workflows, rules, and events.</p>
+      </section>
+
+      <section>
+        <h2>CQRS And Event Sourcing Questions</h2>
+        <h3>Do all Code Genie systems use CQRS?</h3>
+        <p>All models benefit from separating commands and queries conceptually. The generated technical depth can vary from simple separation to separate read models and event-fed projections.</p>
+        <h3>Do all systems need Event Sourcing?</h3>
+        <p>No. Use Event Sourcing when the history of business events is valuable. Use simpler persistence for simple CRUD or state-only systems.</p>
+        <h3>Do I need to model snapshots?</h3>
+        <p>No. Snapshots are an implementation optimization. Product and business users should model meaningful events, rules, and read models; Code Genie can handle technical storage choices.</p>
+      </section>
+
+      <section>
+        <h2>Generation And Hosting Questions</h2>
+        <h3>What should be complete before generation?</h3>
+        <p>Commands, events, aggregates, key rules, read models, interfaces, and integration boundaries should be reviewed. Critical hotspots should be resolved or explicitly accepted as risk.</p>
+        <h3>Can I generate only part of a canvas?</h3>
+        <p>Yes. Generating one bounded context or workflow at a time is usually better for large systems.</p>
+        <h3>What does SAAScade Cloud do?</h3>
+        <p>SAAScade Cloud hosts generated systems when teams want managed deployment, environment configuration, and operational support from the SAAScade platform.</p>
+        <h3>Should the canvas be updated after generation?</h3>
+        <p>Yes. Treat the canvas as living documentation and the source of product and architecture intent. Update it when the business model changes.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: <a href="naming.html">Naming guide</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,11 +1,121 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>SaaScade</title>
-     <meta charset="UTF-8" />
-     <meta http-equiv="refresh" content="0; URL=https://www.saascade.com/" />
-   </head>
-   <body>
-     <p>We're redirecting you to the correct URL. If that doesn't work automatically within 3 seconds, then  <a href="https://platform.saascade.com/">please click here</a>.</p>
-   </body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code Genie Documentation</title>
+  <link rel="stylesheet" href="css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Code Genie Documentation</h1>
+      <p>Code Genie is a visual design workspace for modelling software systems with Domain-Driven Design, EventStorming, CQRS, and Event Sourcing patterns. Use these docs to move from a blank infinite canvas to generated, hosted software on SAAScade Cloud.</p>
+      <nav aria-label="Documentation sections">
+        <ul>
+          <li><a href="getting-started.html">Getting started</a></li>
+          <li><a href="concepts/index.html">Core concepts</a></li>
+          <li><a href="blocks/index.html">Canvas building blocks</a></li>
+          <li><a href="tutorials/index.html">Tutorials</a></li>
+          <li><a href="scenarios/index.html">System types and scenarios</a></li>
+          <li><a href="reference/glossary.html">Glossary</a></li>
+          <li><a href="reference/faq.html">FAQ</a></li>
+          <li><a href="tutorials/cms-example.html">CMS Example</a></li>
+          <li><a href="scenarios/uber-clone.html">Uber Clone</a></li>
+          <li><a href="scenarios/cafe-restaurant.html">Cafe / Restaurant</a></li>
+        </ul>
+      </nav>
+    </header>
+
+  <main>
+      <section>
+        <h2>What You Can Do With Code Genie</h2>
+        <p>Code Genie helps architects, product managers, domain experts, and developers describe the behaviour of a business system visually. You drag blocks onto the canvas, connect them into a story, configure the important details, and let Code Genie generate the software structure from the model.</p>
+        <section id="capabilities">
+          <h3>System Capabilities</h3>
+          <p>Code Genie is designed for and excels at building real-time, event-driven, enterprise-grade software systems. It supports:</p>
+          <ul>
+            <li>Real-time event processing and streaming</li>
+            <li>Event Sourcing for auditable histories</li>
+            <li>CQRS with separate read models for fast, scalable queries</li>
+            <li>Projections and policies to coordinate complex workflows</li>
+            <li>Multi-region deployment, security, and governance for large-scale environments</li>
+          </ul>
+          <p>These capabilities apply across domains like commerce, logistics, finance, healthcare, and more.</p>
+        </section>
+        <ul>
+          <li>Discover a business process by starting with domain events.</li>
+          <li>Design command flows, business policies, aggregates, read models, and integrations.</li>
+          <li>Generate application code from a validated model.</li>
+          <li>Deploy generated systems to SAAScade Cloud when you want hosted infrastructure managed for you.</li>
+          <li>Keep the canvas as living documentation for product, architecture, and development teams.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Start Here</h2>
+        <ol>
+          <li>Read <a href="getting-started.html">Getting started</a> for the shortest path from idea to first model.</li>
+          <li>Use <a href="blocks/index.html">Canvas building blocks</a> when you need to configure a command, event, aggregate, policy, or read model.</li>
+          <li>Try <a href="tutorials/hello-world.html">Hello World</a> or the <a href="tutorials/todo-list.html">TODO example</a> if you want the smallest possible models first.</li>
+          <li>Follow <a href="tutorials/first-event-storm.html">Your first EventStorming model</a> to build a working flow.</li>
+          <li>Review <a href="tutorials/generate-and-host.html">Generate and host a system</a> before creating code or deploying to SAAScade Cloud.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>The Modelling Style</h2>
+        <p>Code Genie supports CRUD-style systems, and the docs include a couple of simple CRUD examples because many internal tools need them. The bigger payoff comes when you model business intent: commands such as <strong>Approve Claim</strong>, events such as <strong>Claim Approved</strong>, policies such as <strong>Notify Repair Partner When Claim Approved</strong>, and aggregates such as <strong>Claim</strong> that protect business rules.</p>
+        <p>That distinction matters because Code Genie is not just drawing boxes. It uses your model as generation input. Clear names, useful boundaries, and explicit rules lead to clearer generated code and a system that matches how the business actually works.</p>
+      </section>
+
+      <section>
+        <h2>Documentation Map</h2>
+        <h3>Concept Guides</h3>
+        <ul>
+          <li><a href="concepts/domain-driven-design.html">Domain-Driven Design in Code Genie</a></li>
+          <li><a href="concepts/eventstorming.html">EventStorming on an infinite canvas</a></li>
+          <li><a href="concepts/cqrs.html">CQRS without ceremony</a></li>
+          <li><a href="concepts/event-sourcing.html">Event Sourcing for product teams</a></li>
+          <li><a href="concepts/crud-vs-ddd.html">CRUD systems and DDD systems</a></li>
+        </ul>
+
+        <h3>Block Guides</h3>
+        <ul>
+          <li><a href="blocks/domain-event.html">Domain Event</a></li>
+          <li><a href="blocks/command.html">Command</a></li>
+          <li><a href="blocks/aggregate.html">Aggregate</a></li>
+          <li><a href="blocks/policy.html">Policy</a></li>
+          <li><a href="blocks/read-model.html">Read Model</a></li>
+          <li><a href="blocks/query.html">Query</a></li>
+          <li><a href="blocks/actor.html">Actor</a></li>
+          <li><a href="blocks/user-interface.html">User Interface</a></li>
+          <li><a href="blocks/external-system.html">External System</a></li>
+          <li><a href="blocks/bounded-context.html">Bounded Context</a></li>
+          <li><a href="blocks/integration-event.html">Integration Event</a></li>
+          <li><a href="blocks/saga.html">Saga or Process Manager</a></li>
+          <li><a href="blocks/invariant.html">Invariant or Business Rule</a></li>
+          <li><a href="blocks/entity.html">Entity</a></li>
+          <li><a href="blocks/value-object.html">Value Object</a></li>
+          <li><a href="blocks/hotspot.html">Hotspot</a></li>
+        </ul>
+
+        <h3>Examples and Reference</h3>
+        <ul>
+          <li><a href="scenarios/software-system-types.html">Types of software systems you can design</a></li>
+          <li><a href="scenarios/ddd-examples.html">DDD example library</a></li>
+          <li><a href="scenarios/crud-examples.html">CRUD example library</a></li>
+          <li><a href="scenarios/uber-clone.html">Uber Clone</a></li>
+          <li><a href="reference/naming.html">Naming guide</a></li>
+          <li><a href="reference/model-review-checklist.html">Model review checklist</a></li>
+          <li><a href="reference/sources.html">Further reading and sources</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Code Genie documentation. Designed for visual software modelling, code generation, and SAAScade Cloud deployment.</p>
+    </footer>
+  </article>
+</body>
 </html>

@@ -1,0 +1,400 @@
+/* Reset */
+*, *::before, *::after 
+{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure dark mode uses its own surface for card look */
+@media (prefers-color-scheme: dark) {
+  article { background: var(--surface-dark); }
+  section { background: var(--surface-dark); }
+}
+
+/* Accent-driven refinements (no HTML changes) */
+section { padding: 1rem 0; }
+section + section { margin-top: 1.25rem; }
+blockquote { border-left: 4px solid var(--accent); padding-left: .75rem; margin: .5rem 0; font-style: italic; color: var(--text); }
+hr { height: 1px; border: 0; background: var(--border); margin: 1.25rem 0; }
+h1 { font-size: clamp(1.75rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.25rem, 4vw, 1.75rem); }
+
+/* Optional: use accent tokens in docs for emphasis/gradients */
+.accent-text {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+:root
+{
+  /* Light theme */
+  --color-bg: #ffffff;
+  /* Light mode card surface */
+  --surface-light: rgba(0, 0, 0, 0.02);
+  --surface-light-strong: rgba(0, 0, 0, 0.04);
+  --surface-ink: #000000;
+  --color-text: #1a1a1a;
+  --color-border: #e0e0e0;
+  --color-code-bg: #f5f5f5;
+  --color-code-fg: #d63384;
+  --color-pre-bg: #f8f8f8;
+  --color-heading-strong: #121212;
+  --color-heading-mid: #333;
+  --color-heading-soft: #444;
+  --color-footer: #666;
+  --radius-lg: 0.75rem;
+  /* Accent colors (shared with app.css) */
+  --accent: #4f8ef7;
+  --accent-strong: #3b82f6;
+  --accent-secondary: #14B8A6;
+  --accent-warm: #f59e0b;
+  --accent-glow: rgba(79, 142, 247, 0.15);
+  /* Section background variable for light/dark switching */
+  --section-bg: var(--surface-light);
+  --button-secondary-bg: rgba(0,0,0,.04);
+  --badge-bg: rgba(0,0,0,.04);
+}
+
+/* Override palette in dark mode */
+@media (prefers-color-scheme: dark)
+{
+  :root
+  {
+    /* Dark theme aligned with app.css tokens */
+    --color-bg: #09090b;
+    --color-text: #e9e9f2;
+    --color-border: rgba(255, 255, 255, 0.15);
+    --color-code-bg: #1e1e1e;
+    --color-code-fg: #f8f8f2;
+    --color-pre-bg: #141414;
+    --color-heading-strong: #e9e9e9;
+    --color-heading-mid: #ddd;
+    --color-heading-soft: #ccc;
+    --color-footer: #9e9e9e;
+    --accent: #4f8ef7;
+    --accent-strong: #3b82f6;
+    --accent-secondary: #14B8A6;
+    --accent-warm: #f59e0b;
+    --accent-glow: rgba(79, 142, 247, 0.15);
+    /* Inverted surface tokens for card look on dark mode */
+    --surface-dark: rgba(0, 0, 0, 0.18);
+    --surface-dark-strong: rgba(0, 0, 0, 0.28);
+    --radius-lg: 0.75rem;
+    --surface-strong: rgba(0, 0, 0, 0.4);
+    --surface-ink: #ffffff;
+    /* Dark mode overrides for section and button backgrounds */
+    --section-bg: rgba(255, 255, 255, 0.06);
+    --button-secondary-bg: rgba(255, 255, 255, 0.06);
+    --badge-bg: rgba(255, 255, 255, 0.06);
+  }
+  body {
+    background: radial-gradient(circle at 50% -20%, rgba(79, 142, 247, 0.12), transparent 50%),
+                radial-gradient(circle at 10% 40%, rgba(139, 92, 246, 0.08), transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.05), transparent 30%),
+                var(--bg);
+  }
+  article {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.18) 60%), var(--surface-dark);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+}
+
+/* Map semantic variables */
+:root {
+  --bg: var(--color-bg);
+  --text: var(--color-text);
+  --border: var(--color-border);
+  --code-bg: var(--color-code-bg);
+  --code-fg: var(--color-code-fg);
+  --pre-bg: var(--color-pre-bg);
+  --pre-border: var(--color-border);
+  --heading1: var(--color-heading-strong);
+  --heading2: var(--color-heading-strong);
+  --heading3: var(--color-heading-mid);
+  --heading4: var(--color-heading-soft);
+  --footer: var(--color-footer);
+}
+
+html 
+{
+  /* Auto dark mode (if supported) with progressive enhancement */
+  color-scheme: light dark;
+}
+
+/* Apply CSS variables in the base styles */
+body 
+{
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  padding: 2rem;
+}
+
+/* Article container */
+article
+{
+  width: min(96%, 1600px);
+  margin: 0 auto;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.02) 60%), var(--surface-light);
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 18px rgba(0,0,0,.15);
+}
+
+/* Header */
+header 
+{
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border);
+}
+
+h1 
+{
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--heading1);
+  margin-bottom: 0.25rem;
+}
+
+/* Sections */
+section
+{
+  margin: 1.25rem 0;
+  padding: 1rem;
+  border-radius: var(--radius-lg, 0.75rem);
+  background: var(--section-bg);
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 18px rgba(0,0,0,.15);
+}
+/* section:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+} */
+
+h2 
+{
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--heading2);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  /* Section card look: avoid touching borders inside card header */
+  border-bottom: none;
+}
+
+h3 
+{
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--heading3);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+h4 
+{
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--heading4);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Text */
+p 
+{
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+strong 
+{
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Lists */
+label 
+{
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
+ul 
+{
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+ol 
+{
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+li 
+{
+  margin-bottom: 0.375rem;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+ul > li 
+{ 
+  display: flex; /* Keeps the dots hidden for custom bullets when needed */ 
+}
+ol > li 
+{ 
+  display: list-item;  
+}
+
+/* Nested lists */
+li > ul, li > ol 
+{
+  margin-top: 0.375rem;
+  margin-bottom: 0;
+}
+
+/* Code */
+code 
+{
+  font-family: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas, monospace;
+  font-size: 0.875em;
+  background: var(--code-bg);
+  padding: 0.125em 0.375em;
+  border-radius: 3px;
+  color: var(--code-fg);
+}
+
+pre 
+{
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+pre code 
+{
+  display: block;
+  padding: 1rem;
+  background: var(--pre-bg);
+  border: 1px solid var(--pre-border);
+  border-radius: 4px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* Footer */
+footer 
+{
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--border);
+}
+
+footer hr 
+{
+  display: none;
+}
+
+footer p 
+{
+  color: var(--footer);
+  font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) 
+{
+  body 
+  {
+    padding: 1rem;
+  }
+
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1.125rem; }
+  pre code { padding: 0.75rem; font-size: 0.8125rem; }
+}
+
+@media (min-width: 1200px) {
+  body { padding: 1rem 0.75rem; }
+  /* Do not set a conflicting max-width here to preserve the percentage-based width */
+}
+
+/* Accent usage improvements for docs */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent-strong);
+  text-decoration: underline;
+}
+
+/* Emphasize section headings with accent stripe */
+h2 {
+  border-left: 4px solid var(--accent);
+  padding-left: .75rem;
+}
+
+/* Simple action button styled with app-accent gradient */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  color: #fff;
+  border: 0;
+  background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+}
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+.button-secondary {
+  background: var(--button-secondary-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* Tiny inline badge to showcase accents */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: .15em .6em;
+  border-radius: 999px;
+  font-size: .75rem;
+  border: 1px solid var(--border);
+  background: var(--badge-bg);
+  color: var(--text);
+}
+
+/* Gradient text helper for emphasis (reuse app.css pattern) */
+.accent-text {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}

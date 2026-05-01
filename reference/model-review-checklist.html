@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Model Review Checklist | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Model Review Checklist</h1>
+      <p>Use this checklist before generating code, sharing a model for sign-off, or deploying to SAAScade Cloud.</p>
+      <nav aria-label="Reference navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../tutorials/generate-and-host.html">Generate and host</a></li>
+          <li><a href="../blocks/index.html">Building blocks</a></li>
+          <li><a href="naming.html">Naming guide</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Language</h2>
+        <ul>
+          <li>Block names use business language.</li>
+          <li>Commands are imperative verb phrases.</li>
+          <li>Events are past-tense facts.</li>
+          <li>Ambiguous words are clarified or marked with hotspots.</li>
+          <li>The same word does not silently mean different things inside one bounded context.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Commands</h2>
+        <ul>
+          <li>Every command has an initiator.</li>
+          <li>Every command targets one primary aggregate or external system.</li>
+          <li>Every command has required input fields.</li>
+          <li>Every command has expected success event or events.</li>
+          <li>Every command has known rejection reasons.</li>
+          <li>Authorization is clear for sensitive commands.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Events</h2>
+        <ul>
+          <li>Every event has an owning context.</li>
+          <li>Every event has a source aggregate, policy, or external system.</li>
+          <li>Event payloads include the facts consumers need.</li>
+          <li>Events are not named after technical implementation details.</li>
+          <li>Events that cross boundaries are modelled as integration events.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Aggregates And Rules</h2>
+        <ul>
+          <li>Every aggregate has an identity.</li>
+          <li>Every aggregate lists the commands it handles.</li>
+          <li>Every aggregate lists the events it emits.</li>
+          <li>Invariants are visible and testable.</li>
+          <li>Aggregates are not oversized collections of unrelated behaviour.</li>
+          <li>Child entities and value objects are inside the correct aggregate boundary.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Policies And Processes</h2>
+        <ul>
+          <li>Every policy has a trigger event.</li>
+          <li>Every policy has a condition or says it always applies.</li>
+          <li>Every policy has a resulting command, notification, or integration event.</li>
+          <li>Long-running policies are promoted to sagas or process managers.</li>
+          <li>Retries, deadlines, and failure paths are clear for automated workflows.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Read Side</h2>
+        <ul>
+          <li>Every important user decision has a read model.</li>
+          <li>Every read model has a consumer.</li>
+          <li>Every read model has update sources.</li>
+          <li>Queries do not change business state.</li>
+          <li>Read model freshness expectations are clear.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Boundaries And Integrations</h2>
+        <ul>
+          <li>Bounded contexts are named after business capabilities.</li>
+          <li>External systems have owners and integration types.</li>
+          <li>Integration events have publishers, subscribers, and contract payloads.</li>
+          <li>Failure handling is defined for unreliable external systems.</li>
+          <li>Privacy-sensitive data crossing boundaries is reviewed.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Generation Readiness</h2>
+        <ul>
+          <li>Generation scope is clear.</li>
+          <li>Persistence and hosting options are selected.</li>
+          <li>Open hotspots are resolved, downgraded, or accepted as risk.</li>
+          <li>Test scenarios exist for key commands, events, policies, and read models.</li>
+          <li>Business owner and technical owner agree the model is ready.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: <a href="sources.html">Further reading and sources</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

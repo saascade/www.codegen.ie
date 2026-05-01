@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Model Order Fulfilment | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Model Order Fulfilment</h1>
+      <p>This tutorial models a proper DDD-style commerce flow with commands, aggregates, events, policies, read models, and integrations.</p>
+      <nav aria-label="Tutorial navigation">
+        <ul>
+          <li><a href="index.html">Tutorials</a></li>
+          <li><a href="../concepts/crud-vs-ddd.html">CRUD vs DDD</a></li>
+          <li><a href="../blocks/saga.html">Saga block</a></li>
+          <li><a href="../scenarios/ddd-examples.html">DDD examples</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Scenario</h2>
+        <p>An online retailer wants generated software for checkout and fulfilment. The business cares about stock reservation, payment authorization, shipment release, customer communication, and exception handling.</p>
+      </section>
+
+      <section>
+        <h2>Bounded Contexts</h2>
+        <ul>
+          <li><strong>Checkout:</strong> cart checkout and order placement.</li>
+          <li><strong>Payments:</strong> authorization, capture, failure, refund.</li>
+          <li><strong>Inventory:</strong> reservation and release.</li>
+          <li><strong>Fulfilment:</strong> packing, dispatch, delivery exceptions.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Core Event Timeline</h2>
+        <ol>
+          <li>Cart Checked Out</li>
+          <li>Order Placed</li>
+          <li>Payment Authorized</li>
+          <li>Inventory Reserved</li>
+          <li>Order Released For Packing</li>
+          <li>Shipment Dispatched</li>
+          <li>Delivery Completed</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Commands And Aggregates</h2>
+        <ul>
+          <li><strong>Place Order</strong> handled by <strong>Order</strong>, emits <strong>Order Placed</strong>.</li>
+          <li><strong>Authorize Payment</strong> handled by <strong>Payment Authorization</strong>, emits <strong>Payment Authorized</strong> or <strong>Payment Declined</strong>.</li>
+          <li><strong>Reserve Inventory</strong> handled by <strong>Inventory Reservation</strong>, emits <strong>Inventory Reserved</strong> or <strong>Inventory Reservation Failed</strong>.</li>
+          <li><strong>Release Order For Packing</strong> handled by <strong>Order</strong>, emits <strong>Order Released For Packing</strong>.</li>
+          <li><strong>Dispatch Shipment</strong> handled by <strong>Shipment</strong>, emits <strong>Shipment Dispatched</strong>.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Policies</h2>
+        <ul>
+          <li>When Order Placed, authorize payment.</li>
+          <li>When Payment Authorized, reserve inventory.</li>
+          <li>When Inventory Reserved, release order for packing.</li>
+          <li>When Inventory Reservation Failed, notify customer care and propose substitution or backorder.</li>
+          <li>When Shipment Dispatched, publish shipment integration event to customer notifications.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Saga Candidate</h2>
+        <p>Promote the flow to an <strong>Order Fulfilment Process</strong> saga if the business needs a long-running coordinator that tracks payment, inventory, packing, shipment, retries, and compensation. Add compensation commands such as <strong>Void Payment Authorization</strong> and <strong>Release Inventory Reservation</strong>.</p>
+      </section>
+
+      <section>
+        <h2>Read Models</h2>
+        <ul>
+          <li><strong>Customer Order Status:</strong> visible to customers.</li>
+          <li><strong>Fulfilment Work Queue:</strong> visible to warehouse operators.</li>
+          <li><strong>Inventory Reservation Exceptions:</strong> visible to operations.</li>
+          <li><strong>Order Timeline:</strong> visible to customer support.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Review Questions</h2>
+        <ul>
+          <li>Can payment be captured before shipment, or only after dispatch?</li>
+          <li>Can a partial inventory reservation release a partial shipment?</li>
+          <li>Who can override a failed reservation?</li>
+          <li>Which events must be published to external systems?</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next tutorial: <a href="subscription-billing.html">Model SaaS subscription billing</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

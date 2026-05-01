@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hotspot Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Hotspot Block</h1>
+      <p>A hotspot marks an unresolved question, risk, disagreement, missing rule, or modelling decision.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="../reference/model-review-checklist.html">Review checklist</a></li>
+          <li><a href="../tutorials/first-event-storm.html">First tutorial</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use a Hotspot block whenever the team is unsure. Do not let uncertainty disappear into meeting notes. Hotspots preserve context and make it clear what must be resolved before generation, deployment, or business sign-off.</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Title:</strong> short question or risk label.</li>
+          <li><strong>Description:</strong> what is unknown or contested.</li>
+          <li><strong>Related blocks:</strong> commands, events, policies, aggregates, or integrations affected.</li>
+          <li><strong>Owner:</strong> person or role responsible for resolving it.</li>
+          <li><strong>Resolution status:</strong> open, researching, decided, accepted risk, or blocked.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Decision deadline:</strong> when the hotspot must be resolved.</li>
+          <li><strong>Impact:</strong> generation blocker, compliance risk, user experience risk, integration risk, or business ambiguity.</li>
+          <li><strong>Options considered:</strong> alternatives and trade-offs.</li>
+          <li><strong>Decision record:</strong> final answer and why it was chosen.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Examples</h2>
+        <ul>
+          <li>Can a supervisor approve a claim without all evidence?</li>
+          <li>Which system owns customer contact preferences?</li>
+          <li>What happens when the payment gateway authorizes but capture fails?</li>
+          <li>Does “cancelled” mean user cancelled, system expired, or vendor rejected?</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Generation Notes</h2>
+        <p>Code Genie should treat unresolved generation-blocking hotspots as review warnings. Some hotspots can remain as accepted risks, but unresolved business rules should be closed before generating production-ready code.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: <a href="../tutorials/index.html">Tutorials</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Policy Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Policy Block</h1>
+      <p>A policy describes what should happen when an event occurs and a condition is met.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="domain-event.html">Domain Event</a></li>
+          <li><a href="command.html">Command</a></li>
+          <li><a href="saga.html">Saga</a></li>
+          <li><a href="read-model.html">Read Model</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use a Policy block for event-driven follow-up behaviour: when <strong>Payment Authorized</strong> happens, <strong>Reserve Inventory</strong>; when <strong>Claim Approved</strong> happens, <strong>Issue Payment</strong>; when <strong>Appointment Cancelled</strong> happens, <strong>Release Appointment Slot</strong>.</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Name:</strong> readable rule phrase, such as <strong>Reserve Inventory After Payment</strong>.</li>
+          <li><strong>Trigger event:</strong> the event that starts the policy.</li>
+          <li><strong>Condition:</strong> when the policy applies.</li>
+          <li><strong>Resulting command:</strong> command issued when the policy applies.</li>
+          <li><strong>Owner:</strong> role or team responsible for the rule.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Decision information:</strong> read model or external data needed to evaluate the condition.</li>
+          <li><strong>Timing:</strong> immediate, delayed, scheduled, or retryable.</li>
+          <li><strong>Failure behaviour:</strong> what happens when the resulting command fails.</li>
+          <li><strong>Idempotency rule:</strong> how to prevent duplicate follow-up actions.</li>
+          <li><strong>Audit wording:</strong> human-readable explanation of the automated decision.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Connections</h2>
+        <ul>
+          <li>Starts from a <a href="domain-event.html">Domain Event</a> or <a href="integration-event.html">Integration Event</a>.</li>
+          <li>May read a <a href="read-model.html">Read Model</a>.</li>
+          <li>Usually issues a <a href="command.html">Command</a>.</li>
+          <li>May be promoted to a <a href="saga.html">Saga or Process Manager</a> when it coordinates a long-running workflow.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Examples</h2>
+        <ul>
+          <li>When Order Paid, reserve inventory for every unreserved item.</li>
+          <li>When Payment Failed, start dunning sequence if the subscription is active.</li>
+          <li>When Claim Approved, issue payment if the beneficiary bank account is verified.</li>
+          <li>When Delivery Missed, create customer recovery task if the delivery is high priority.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Generation Notes</h2>
+        <p>Code Genie uses policies to generate event handlers, workflow triggers, background jobs, retries, and automated command dispatch. Keep policies explicit so business automation remains visible on the canvas.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next block: <a href="read-model.html">Read Model</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

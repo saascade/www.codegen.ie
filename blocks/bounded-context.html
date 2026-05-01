@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bounded Context Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Bounded Context Block</h1>
+      <p>A bounded context defines where a model, language, ownership, and generation boundary apply.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="aggregate.html">Aggregate</a></li>
+          <li><a href="integration-event.html">Integration Event</a></li>
+          <li><a href="../concepts/domain-driven-design.html">DDD</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use a Bounded Context block when the canvas covers more than one business capability, team, deployment unit, or vocabulary. Bounded contexts prevent a large model from pretending that every term has one meaning everywhere.</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Name:</strong> capability name, such as <strong>Billing</strong>, <strong>Fulfilment</strong>, or <strong>Claims Assessment</strong>.</li>
+          <li><strong>Purpose:</strong> business outcome the context owns.</li>
+          <li><strong>Owned language:</strong> key terms and their meaning inside this context.</li>
+          <li><strong>Owned blocks:</strong> aggregates, commands, events, policies, and read models inside the boundary.</li>
+          <li><strong>Interfaces:</strong> integration events, APIs, or files used to communicate with other contexts.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Team owner:</strong> team accountable for the context.</li>
+          <li><strong>Generation target:</strong> module, service, application, or package.</li>
+          <li><strong>Persistence style:</strong> current-state, event-sourced, or mixed.</li>
+          <li><strong>Deployment preference:</strong> same application, separate service, or hosted boundary on SAAScade Cloud.</li>
+          <li><strong>Context relationships:</strong> upstream, downstream, customer-supplier, shared kernel, or anti-corruption layer.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Examples</h2>
+        <ul>
+          <li><strong>Commerce:</strong> Catalog, Checkout, Payments, Fulfilment, Returns.</li>
+          <li><strong>Insurance:</strong> Policy Administration, Claims Intake, Claims Assessment, Payments, Fraud Review.</li>
+          <li><strong>SaaS:</strong> Identity, Subscription Billing, Entitlements, Usage Metering, Support.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next block: <a href="integration-event.html">Integration Event</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

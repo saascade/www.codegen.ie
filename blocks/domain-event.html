@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Domain Event Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Domain Event Block</h1>
+      <p>A domain event records a meaningful business fact that has already happened.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="command.html">Command</a></li>
+          <li><a href="aggregate.html">Aggregate</a></li>
+          <li><a href="policy.html">Policy</a></li>
+          <li><a href="../reference/naming.html">Naming guide</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use a Domain Event block for something the business would recognize as having occurred: <strong>Order Placed</strong>, <strong>Payment Failed</strong>, <strong>Claim Approved</strong>, <strong>Appointment Cancelled</strong>. Events are the backbone of EventStorming and are especially important when generating event-sourced or event-driven systems.</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Name:</strong> past-tense business phrase, such as <strong>Shipment Dispatched</strong>.</li>
+          <li><strong>Owning bounded context:</strong> the context where the event has its official meaning.</li>
+          <li><strong>Source aggregate or source system:</strong> the aggregate or external system that produces the event.</li>
+          <li><strong>Event payload:</strong> the facts consumers need, such as identifiers, timestamps, amounts, status reason, or actor id.</li>
+          <li><strong>Business meaning:</strong> a short description of why the event matters.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Correlation id:</strong> ties events from one business journey together.</li>
+          <li><strong>Causation id:</strong> identifies the command or event that caused this event.</li>
+          <li><strong>Version:</strong> useful when the event payload may evolve.</li>
+          <li><strong>Retention and audit needs:</strong> especially for regulated domains.</li>
+          <li><strong>Read models updated:</strong> the projections or views that should change after this event.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Connections</h2>
+        <ul>
+          <li>Usually follows a <a href="command.html">Command</a> handled by an <a href="aggregate.html">Aggregate</a>.</li>
+          <li>May trigger a <a href="policy.html">Policy</a>, <a href="saga.html">Saga</a>, or <a href="integration-event.html">Integration Event</a>.</li>
+          <li>May update one or more <a href="read-model.html">Read Models</a>.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Examples</h2>
+        <h3>Good Event Names</h3>
+        <ul>
+          <li>Order Placed</li>
+          <li>Inventory Reserved</li>
+          <li>Claim Evidence Requested</li>
+          <li>Subscription Payment Failed</li>
+          <li>Appointment Rescheduled</li>
+        </ul>
+        <h3>Weak Event Names</h3>
+        <ul>
+          <li>Update Order</li>
+          <li>Click Submit</li>
+          <li>Save Record</li>
+          <li>Set Status</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Generation Notes</h2>
+        <p>Code Genie uses domain events to generate event contracts, projection inputs, integration hooks, audit trails, and event-sourced aggregate behaviour when that persistence style is selected. Keep event payloads focused on facts, not screen-only fields.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next block: <a href="command.html">Command</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saga Or Process Manager Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Saga Or Process Manager Block</h1>
+      <p>A saga or process manager coordinates a long-running workflow across commands, events, systems, and time.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="policy.html">Policy</a></li>
+          <li><a href="domain-event.html">Domain Event</a></li>
+          <li><a href="command.html">Command</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use a Saga or Process Manager block when a policy is no longer a simple one-event, one-command reaction. It is useful for multi-step workflows with waiting, retries, deadlines, compensating actions, or several aggregates.</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Name:</strong> workflow name, such as <strong>Order Fulfilment Process</strong>.</li>
+          <li><strong>Starting event:</strong> event that begins the workflow.</li>
+          <li><strong>State tracked:</strong> information the process needs while it is running.</li>
+          <li><strong>Steps:</strong> commands issued and events awaited.</li>
+          <li><strong>Completion event:</strong> event or condition that ends the workflow.</li>
+          <li><strong>Failure path:</strong> timeout, retry, cancellation, manual intervention, or compensation.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Timeouts and deadlines:</strong> how long each step can wait.</li>
+          <li><strong>Compensation commands:</strong> actions that undo or mitigate previous steps.</li>
+          <li><strong>Human escalation:</strong> role and interface for manual resolution.</li>
+          <li><strong>Observability:</strong> milestone events and operational status.</li>
+          <li><strong>Idempotency strategy:</strong> duplicate event and command handling.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Examples</h2>
+        <ul>
+          <li>Order Fulfilment waits for payment, inventory reservation, packing, carrier booking, and dispatch.</li>
+          <li>Loan Origination waits for identity checks, credit assessment, document upload, and final approval.</li>
+          <li>Subscription Dunning retries payments, sends notifications, pauses entitlements, and closes the case after recovery or cancellation.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next block: <a href="invariant.html">Invariant or Business Rule</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

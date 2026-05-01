@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Interface Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>User Interface Block</h1>
+      <p>A user interface block represents the screen, form, portal, workflow step, notification, or API surface where users and systems interact with the generated application.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="actor.html">Actor</a></li>
+          <li><a href="command.html">Command</a></li>
+          <li><a href="query.html">Query</a></li>
+          <li><a href="read-model.html">Read Model</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use a User Interface block when you want generated screens, forms, portals, dashboards, API endpoints, or task surfaces to reflect the model. Interfaces connect actors to commands and queries.</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Name:</strong> task-oriented surface, such as <strong>Claim Review Screen</strong>.</li>
+          <li><strong>Audience:</strong> actors who use it.</li>
+          <li><strong>Commands available:</strong> actions users can take from the surface.</li>
+          <li><strong>Queries used:</strong> read models displayed or searched.</li>
+          <li><strong>Input fields:</strong> data captured before commands are submitted.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Workflow position:</strong> where this screen sits in the user journey.</li>
+          <li><strong>Validation feedback:</strong> messages for missing fields or rejected commands.</li>
+          <li><strong>Empty and loading states:</strong> what users see while waiting or when no records exist.</li>
+          <li><strong>Role-specific variations:</strong> fields or actions hidden for some actors.</li>
+          <li><strong>Navigation outcome:</strong> where the user goes after success or failure.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Examples</h2>
+        <ul>
+          <li><strong>Order Checkout:</strong> issues Place Order and displays Cart Summary.</li>
+          <li><strong>Claims Work Queue:</strong> queries Claims Awaiting Review and opens Claim Review Screen.</li>
+          <li><strong>Subscription Admin:</strong> issues Change Plan, Add Seat, and Cancel Subscription.</li>
+          <li><strong>Driver Mobile Stop View:</strong> issues Mark Arrived, Capture Proof Of Delivery, and Report Exception.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Generation Notes</h2>
+        <p>Code Genie uses interface blocks to generate routes, forms, buttons, API entry points, validation messages, and page-to-command wiring. Model interfaces around tasks, not generic database tables, unless the system is intentionally CRUD.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next block: <a href="external-system.html">External System</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

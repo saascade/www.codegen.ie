@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Uber Clone Scenario | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Uber Clone Scenario</h1>
+      <p>DDD/CQRS/Event Sourcing model for a ride-hailing platform inspired by Uber. Deep dive into building blocks, lifecycle, and data flows.</p>
+      <nav aria-label="Documentation navigation">
+        <ul>
+          <li><a href="../tutorials/uber-clone.html">Uber Clone Tutorial</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Context</h2>
+        <p>Users request rides; drivers accept; rides are started, completed, and paid. System must handle surge pricing, routing, and safety checks across multiple regions.</p>
+      </section>
+
+      <section>
+        <h2>Key Building Blocks</h2>
+        <ul>
+          <li><strong>Actors:</strong> Rider, Driver</li>
+          <li><strong>Aggregates:</strong> Ride</li>
+          <li><strong>Domain Events:</strong> RideRequested, DriverAssigned, RideStarted, RideEnded, RideCancelled</li>
+          <li><strong>Commands:</strong> RequestRide, AcceptRide, StartRide, EndRide, CancelRide</li>
+          <li><strong>Read Models:</strong> RideDetails, DriverAvailability</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Lifecycle</h2>
+        <ol>
+          <li>Rider requests a ride (RequestRide).</li>
+          <li>System assigns a nearby Driver (DriverAssigned).</li>
+          <li>Driver begins trip (RideStarted).</li>
+          <li>Trip ends at destination (RideEnded).</li>
+          <li>Payment processed and recorded (PaymentProcessed).</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Policies</h2>
+        <ul>
+          <li> Surge pricing policy during demand spikes.</li>
+          <li> Cancellation penalties and refunds.</li>
+          <li> Driver safety checks and rider verification.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Integrations</h2>
+        <ul>
+          <li>Maps and routing services</li>
+          <li>Payment gateways</li>
+          <li>Notification channels</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Historical Events</h2>
+        <p>Event history allows reconstruction of each ride lifecycle for auditing and analytics.</p>
+        <pre><code>
+RideRequested | DriverAssigned | RideStarted | RideEnded | PaymentProcessed
+</code></pre>
+      </section>
+    </main>
+
+    <footer>
+      <p>Links: <a href="../tutorials/uber-clone.html">Uber Clone Tutorial</a></p>
+    </footer>
+  </article>
+  </body>
+</html>

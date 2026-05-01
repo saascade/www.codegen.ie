@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Canvas Building Blocks | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Canvas Building Blocks</h1>
+      <p>Every block on a Code Genie canvas has a modelling purpose and generation impact. Use these pages when you need to know what data to enter and how each block should connect to the rest of the model.</p>
+      <nav aria-label="Documentation navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../getting-started.html">Getting started</a></li>
+          <li><a href="../concepts/index.html">Concepts</a></li>
+          <li><a href="../tutorials/index.html">Tutorials</a></li>
+          <li><a href="../reference/model-review-checklist.html">Review checklist</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Core Behaviour Blocks</h2>
+        <ul>
+          <li><a href="domain-event.html">Domain Event</a>: a business fact that happened.</li>
+          <li><a href="command.html">Command</a>: an intent to change the system.</li>
+          <li><a href="aggregate.html">Aggregate</a>: the consistency boundary that accepts commands and emits events.</li>
+          <li><a href="policy.html">Policy</a>: a reaction to an event that may trigger more work.</li>
+          <li><a href="read-model.html">Read Model</a>: information shaped for a screen, query, decision, or integration.</li>
+          <li><a href="query.html">Query</a>: a request for information that does not change state.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>People, Interfaces, and Integrations</h2>
+        <ul>
+          <li><a href="actor.html">Actor</a>: a user role, team, or system role that initiates work.</li>
+          <li><a href="user-interface.html">User Interface</a>: the screen, form, portal, or API surface used to issue commands or run queries.</li>
+          <li><a href="external-system.html">External System</a>: a system outside the generated boundary.</li>
+          <li><a href="integration-event.html">Integration Event</a>: an event published across a system boundary.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Structure And Rule Blocks</h2>
+        <ul>
+          <li><a href="bounded-context.html">Bounded Context</a>: a model boundary with its own language and ownership.</li>
+          <li><a href="saga.html">Saga or Process Manager</a>: a long-running workflow coordinator.</li>
+          <li><a href="invariant.html">Invariant or Business Rule</a>: a rule that must remain true.</li>
+          <li><a href="entity.html">Entity</a>: a domain object with identity over time.</li>
+          <li><a href="value-object.html">Value Object</a>: an immutable descriptive value.</li>
+          <li><a href="hotspot.html">Hotspot</a>: a visible question, risk, disagreement, or unresolved decision.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Connection Grammar</h2>
+        <p>Most Code Genie models follow this story shape:</p>
+        <ol>
+          <li>An actor uses a user interface or external system to issue a command.</li>
+          <li>An aggregate handles the command and enforces rules.</li>
+          <li>The aggregate emits one or more domain events.</li>
+          <li>Policies react to events and may trigger additional commands.</li>
+          <li>Events update read models.</li>
+          <li>Queries return read models to users or systems.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <p>Start with <a href="domain-event.html">Domain Event</a>, <a href="command.html">Command</a>, and <a href="aggregate.html">Aggregate</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

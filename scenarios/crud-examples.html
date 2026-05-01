@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRUD Example Library | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>CRUD Example Library</h1>
+      <p>CRUD examples are included for clarity. Code Genie supports them, but they are not where the power of DDD usually appears.</p>
+      <nav aria-label="Scenario navigation">
+        <ul>
+          <li><a href="index.html">Scenarios</a></li>
+          <li><a href="software-system-types.html">System types</a></li>
+          <li><a href="ddd-examples.html">DDD examples</a></li>
+          <li><a href="../concepts/crud-vs-ddd.html">CRUD vs DDD</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>TODO List</h2>
+        <p>Use CRUD when TODO items are personal or lightweight team tasks without complex workflow.</p>
+        <ul>
+          <li><strong>Commands:</strong> Create Todo Item, Update Todo Item, Complete Todo Item, Delete Todo Item.</li>
+          <li><strong>Events:</strong> Todo Item Created, Todo Item Updated, Todo Item Completed, Todo Item Deleted.</li>
+          <li><strong>Read models:</strong> Todo List, Todo Item Detail, Completed Todo History.</li>
+          <li><strong>Queries:</strong> Show Open Todo Items, Show Completed Todo Items, Search Todo Items.</li>
+          <li><strong>Rules:</strong> title required, completed items can be reopened, deleted items are hidden by default.</li>
+        </ul>
+        <p>See the <a href="../tutorials/todo-list.html">TODO tutorial</a> for the behaviour-rich version with assignment, reminders, and escalation.</p>
+      </section>
+
+      <section>
+        <h2>Supplier Directory</h2>
+        <p>Use CRUD when the goal is to maintain supplier records and search them.</p>
+        <ul>
+          <li><strong>Commands:</strong> Create Supplier, Update Supplier, Archive Supplier.</li>
+          <li><strong>Events:</strong> Supplier Created, Supplier Updated, Supplier Archived.</li>
+          <li><strong>Read models:</strong> Supplier Search Result, Supplier Detail.</li>
+          <li><strong>Queries:</strong> Search Suppliers, Get Supplier Detail.</li>
+          <li><strong>Rules:</strong> supplier name required, tax id unique, archived suppliers hidden by default.</li>
+        </ul>
+        <p>Upgrade this to DDD only if supplier onboarding, due diligence, risk review, approval, or compliance renewal becomes important.</p>
+      </section>
+
+      <section>
+        <h2>Product Reference Catalogue</h2>
+        <p>Use CRUD when users manage product reference information that other systems consume.</p>
+        <ul>
+          <li><strong>Commands:</strong> Add Product, Update Product, Archive Product, Assign Category.</li>
+          <li><strong>Events:</strong> Product Added, Product Updated, Product Archived, Product Category Assigned.</li>
+          <li><strong>Read models:</strong> Product Search Result, Product Detail, Category List.</li>
+          <li><strong>Queries:</strong> Search Products, Get Product Detail, List Active Categories.</li>
+          <li><strong>Rules:</strong> SKU unique, category required for active product, archived products unavailable for new orders.</li>
+        </ul>
+        <p>Upgrade this to DDD if pricing, bundling, inventory allocation, approvals, publication workflow, or compliance checks become central.</p>
+      </section>
+
+      <section>
+        <h2>CRUD Modelling Checklist</h2>
+        <ul>
+          <li>Use plain create, update, archive, and delete commands only when they match the business language.</li>
+          <li>Still emit useful events for audit and integrations.</li>
+          <li>Still model value objects for email, money, address, and other reusable values.</li>
+          <li>Do not invent aggregates, policies, or sagas unless there is real behaviour to protect.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: <a href="../reference/glossary.html">Glossary</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

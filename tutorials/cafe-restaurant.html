@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cafe / Restaurant PM Style | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Cafe / Restaurant Management System (FOH + BOH)</h1>
+      <p>Deep modeling of a cafe/restaurant domain using Domain-Driven Design, Event Storming, CQRS, and Event Sourcing. Focus on Front-of-House (FOH) and Back-of-House (BOH) workflows: orders, tabs, kitchen, bar, service, and payments. No JavaScript; semantic HTML only.</p>
+      <nav aria-label="Tutorial navigation">
+        <ul>
+          <li><a href="index.html">Tutorials</a></li>
+          <li><a href="cafes-restaurant.html">Cafe/Restaurant Overview</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Overview</h2>
+        <p>This example models a cafe/restaurant where customers sit at tables, browse a menu, and receive food and drinks. FOH handles orders, service, and payments; BOH handles kitchen and bar preparation, inventory, and reporting. The system uses commands, events, and projections to coordinate complex workflows.</p>
+      </section>
+
+      <section>
+        <h2>Domain Model (Key Building Blocks)</h2>
+        <ul>
+          <li><strong>Aggregates:</strong> Tab, Order</li>
+          <li><strong>Entities:</strong> Customer, Server, Table, MenuItem, Dish, Drink, KitchenTicket, Payment</li>
+          <li><strong>Value Objects:</strong> Location, TimeSlot, Price, Currency</li>
+          <li><strong>Domain Events:</strong> TabOpened, TableSeated, OrderPlaced, ItemAddedToOrder, OrderPrepared, DishReady, DishServed, PaymentProcessed, TabClosed</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Commands</h2>
+        <ul>
+          <li>OpenTab</li>
+          <li>SeatCustomer</li>
+          <li>PlaceOrder</li>
+          <li>AddItemToOrder</li>
+          <li>StartPreparation</li>
+          <li>CompletePreparation</li>
+          <li>ServeItem</li>
+          <li>CloseTab</li>
+          <li>ProcessPayment</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Domain Events</h2>
+        <ul>
+          <li>TabOpened</li>
+          <li>TableSeated</li>
+          <li>OrderPlaced</li>
+          <li>ItemAddedToOrder</li>
+          <li>OrderPrepared</li>
+          <li>DishReady</li>
+          <li>DishServed</li>
+          <li>PaymentProcessed</li>
+          <li>TabClosed</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Read Models & Projections</h2>
+        <ul>
+          <li>CurrentTabView</li>
+          <li>OpenOrders</li>
+          <li>KitchenQueue</li>
+          <li>TableStatus</li>
+          <li>RevenueByDay</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Lifecycle Walkthrough</h2>
+        <ol>
+          <li>Guest is seated and opens a tab (OpenTab, SeatCustomer).</li>
+          <li>Server places initial drink/appetizer orders (PlaceOrder, AddItemToOrder).</li>
+          <li>BOH starts preparation; KitchenTicket and DishReady events drive status updates.</li>
+          <li>Food arrives; server serves items (DishServed) and updates tab/bill.</li>
+          <li>Guest pays; TabClosed and PaymentProcessed events finalize the lifecycle.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Examples & Data Payloads</h2>
+        <p>Conceptual payloads for orders and payments:</p>
+        <pre><code>
+// OpenTab
+{
+  "tabId": "tab_001",
+  "tableId": 12,
+  "customerId": "cust_745",
+  "openedAt": "2026-04-30T12:00:00Z"
+}
+// PlaceOrder
+{
+  "tabId": "tab_001",
+  "orderId": "order_1001",
+  "items": [ {"menuItemId": "m_espresso", "quantity": 2}, {"menuItemId": "m_bagel", "quantity": 1} ],
+  "placedAt": "2026-04-30T12:02:00Z"
+}
+// PaymentProcessed
+{
+  "tabId": "tab_001",
+  "amount": 15.75,
+  "currency": "USD",
+  "method": "CreditCard",
+  "paidAt": "2026-04-30T12:35:00Z"
+}
+</code></pre>
+      </section>
+
+      <section>
+        <h2>Diagram & Illustration</h2>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=1200&q=60" alt="Cafe/Restaurant operations flow diagram" />
+          <figcaption>FOH vs BOH flow: seating, ordering, kitchen, bar, service, and payment.</figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <footer>
+      <p>Note: This is a deep, modeling-focused example. Adapt fields to your domain needs.</p>
+    </footer>
+  </article>
+</body>
+</html>

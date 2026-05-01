@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Domain-Driven Design | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Domain-Driven Design In Code Genie</h1>
+      <p>Domain-Driven Design, or DDD, is a way to design software around the language, rules, and boundaries of the business domain.</p>
+      <nav aria-label="Concept navigation">
+        <ul>
+          <li><a href="index.html">Concepts</a></li>
+          <li><a href="../blocks/index.html">Building blocks</a></li>
+          <li><a href="../scenarios/ddd-examples.html">DDD examples</a></li>
+          <li><a href="../reference/naming.html">Naming guide</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>The Point Of DDD</h2>
+        <p>DDD is useful when the value of the software depends on getting business behaviour right. It helps teams avoid a model that only mirrors database tables and instead create a model that reflects decisions, constraints, workflows, and vocabulary.</p>
+        <p>In Code Genie, DDD shows up as names and boundaries on the canvas. The better the language on the canvas, the better the generated system can express the business.</p>
+      </section>
+
+      <section>
+        <h2>Ubiquitous Language</h2>
+        <p>Ubiquitous language is the shared vocabulary used by domain experts, product people, architects, and developers. It should appear in block names, descriptions, validations, generated APIs, screen labels, and acceptance tests.</p>
+        <ul>
+          <li>Use the business term <strong>Claim</strong> if the business says claim, not <strong>Case Record</strong> because that is a database label.</li>
+          <li>Use <strong>Reserve Appointment Slot</strong> if the user is reserving capacity, not <strong>Update Slot Status</strong>.</li>
+          <li>Use <strong>Shipment Dispatched</strong> for a fact that matters to fulfilment, not <strong>Shipment Row Saved</strong>.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Bounded Contexts</h2>
+        <p>A bounded context is a part of the business where a model has one clear meaning. The same word can mean different things in different contexts. A <strong>Customer</strong> in Sales may be a lead or buyer, while a <strong>Customer</strong> in Billing may be the account responsible for payment.</p>
+        <p>Use bounded contexts in Code Genie when a large canvas needs clear ownership, language, deployment, or integration boundaries. They are especially helpful before generating code because they prevent one oversized model from becoming one oversized system.</p>
+      </section>
+
+      <section>
+        <h2>Tactical Building Blocks</h2>
+        <p>Code Genie includes the DDD concepts users need to configure generated software without forcing them to manually design every technical layer.</p>
+        <ul>
+          <li><strong>Aggregates</strong> protect business rules and consistency.</li>
+          <li><strong>Entities</strong> represent things with identity over time.</li>
+          <li><strong>Value Objects</strong> represent descriptive values such as money, email address, postal address, time range, or measurement.</li>
+          <li><strong>Domain Events</strong> record business facts that happened.</li>
+          <li><strong>Policies</strong> describe reactions to events.</li>
+          <li><strong>Read Models</strong> shape the information users and systems need to make decisions.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Good DDD Candidates</h2>
+        <p>Use a DDD-style model when the process has meaningful behaviour, not just data maintenance.</p>
+        <ul>
+          <li>Approvals, reviews, fulfilment, allocation, rating, pricing, billing, claims, compliance, case management, and scheduling.</li>
+          <li>Workflows with several actors or teams.</li>
+          <li>Rules that change as the business learns.</li>
+          <li>Systems where auditability and explainability matter.</li>
+          <li>Processes where timing, exceptions, or state transitions are important.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>When To Stay Simple</h2>
+        <p>DDD is not a badge of sophistication. If a tool is a simple record manager, use a simple model. Code Genie can generate CRUD-style systems for reference data, admin catalogues, and lightweight internal back offices. Reach for richer DDD modelling when the business behaviour deserves it.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: <a href="eventstorming.html">EventStorming on an infinite canvas</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

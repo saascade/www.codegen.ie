@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Query Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Query Block</h1>
+      <p>A query asks for information and does not change business state.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="read-model.html">Read Model</a></li>
+          <li><a href="command.html">Command</a></li>
+          <li><a href="../concepts/cqrs.html">CQRS</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use a Query block when a user interface, policy, report, or external consumer needs data: <strong>Find Available Appointment Slots</strong>, <strong>Show Open Claims</strong>, <strong>Get Subscription Usage</strong>, <strong>Search Suppliers</strong>.</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Name:</strong> question-style phrase, such as <strong>Find Orders Awaiting Shipment</strong>.</li>
+          <li><strong>Consumer:</strong> actor, interface, policy, report, or external system that asks the question.</li>
+          <li><strong>Target read model:</strong> read model returned by the query.</li>
+          <li><strong>Parameters:</strong> filters such as customer id, date range, status, search text, or pagination.</li>
+          <li><strong>Result shape:</strong> list, detail, count, summary, export, or dashboard data.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Authorization:</strong> who may run the query and which fields they can see.</li>
+          <li><strong>Sorting and pagination:</strong> default order, page size, and limits.</li>
+          <li><strong>Performance expectation:</strong> interactive, batch, export, or analytical.</li>
+          <li><strong>Cache policy:</strong> whether stale data is acceptable.</li>
+          <li><strong>Empty state:</strong> message or next action when no results exist.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Connections</h2>
+        <ul>
+          <li>Reads from one <a href="read-model.html">Read Model</a> or a small, deliberate set of read models.</li>
+          <li>May be used by a <a href="user-interface.html">User Interface</a>, <a href="policy.html">Policy</a>, or <a href="external-system.html">External System</a>.</li>
+          <li>Should not emit <a href="domain-event.html">Domain Events</a> or trigger <a href="command.html">Commands</a>.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Examples</h2>
+        <ul>
+          <li>Find Available Appointment Slots by clinician, location, and date range.</li>
+          <li>Show Claims Awaiting Evidence by handler and SLA age.</li>
+          <li>Get Account Billing Summary by account id.</li>
+          <li>Search Suppliers by capability, region, and certification status.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Generation Notes</h2>
+        <p>Code Genie uses queries to generate read APIs, page loaders, report endpoints, authorization checks, and optimized retrieval paths. If a query appears to change state, split the state change into a command and keep the query pure.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next block: <a href="actor.html">Actor</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

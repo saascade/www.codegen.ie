@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Value Object Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Value Object Block</h1>
+      <p>A value object describes a concept by its values rather than by a separate identity.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="aggregate.html">Aggregate</a></li>
+          <li><a href="entity.html">Entity</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use a Value Object block for concepts such as Money, Email Address, Postal Address, Date Range, Quantity, Percentage, Geo Coordinate, Measurement, or Tax Rate. Value objects make rules clearer and reduce primitive fields scattered across the model.</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Name:</strong> descriptive concept name.</li>
+          <li><strong>Fields:</strong> component values, such as amount and currency for Money.</li>
+          <li><strong>Validation:</strong> rules for valid values.</li>
+          <li><strong>Used by:</strong> aggregates, entities, commands, events, and read models that reference it.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Formatting:</strong> how the value appears to users.</li>
+          <li><strong>Comparison rule:</strong> how equality or ordering works.</li>
+          <li><strong>Conversion rule:</strong> units, currencies, time zones, or locale handling.</li>
+          <li><strong>Privacy classification:</strong> useful for email, phone, address, and personal data.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Examples</h2>
+        <ul>
+          <li><strong>Money:</strong> amount, currency, rounding rule.</li>
+          <li><strong>Appointment Window:</strong> start time, end time, time zone.</li>
+          <li><strong>Delivery Address:</strong> street, locality, region, postal code, country.</li>
+          <li><strong>Risk Score:</strong> score, band, calculated date.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next block: <a href="hotspot.html">Hotspot</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

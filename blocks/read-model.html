@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Read Model Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Read Model Block</h1>
+      <p>A read model is information shaped for a user, policy, query, report, dashboard, or external consumer.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="query.html">Query</a></li>
+          <li><a href="domain-event.html">Domain Event</a></li>
+          <li><a href="user-interface.html">User Interface</a></li>
+          <li><a href="../concepts/cqrs.html">CQRS</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use a Read Model block when the system needs to present information without changing business state. Read models are often optimized for a specific task: an approval queue, customer account summary, shipment tracking view, risk dashboard, or billing history.</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Name:</strong> task-focused information name, such as <strong>Claims Awaiting Review</strong>.</li>
+          <li><strong>Consumers:</strong> user interfaces, queries, policies, reports, or integrations that use it.</li>
+          <li><strong>Fields:</strong> data shown or returned.</li>
+          <li><strong>Source events or data sources:</strong> what keeps the read model up to date.</li>
+          <li><strong>Freshness expectation:</strong> immediate, near-real-time, periodic, or on demand.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Filters and sorting:</strong> how users find the right information.</li>
+          <li><strong>Security:</strong> who can see which fields.</li>
+          <li><strong>Pagination or export needs:</strong> useful for generated APIs and screens.</li>
+          <li><strong>Projection rules:</strong> how domain events change the read model.</li>
+          <li><strong>Staleness message:</strong> user-facing wording if the model can lag behind writes.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Connections</h2>
+        <ul>
+          <li>Updated by <a href="domain-event.html">Domain Events</a> or integration data.</li>
+          <li>Returned by <a href="query.html">Queries</a>.</li>
+          <li>Displayed in <a href="user-interface.html">User Interfaces</a>.</li>
+          <li>May provide decision data for <a href="policy.html">Policies</a>.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Examples</h2>
+        <ul>
+          <li><strong>Order Status Summary:</strong> order number, customer, current status, payment state, shipment state, next action.</li>
+          <li><strong>Underwriter Work Queue:</strong> application id, applicant, risk score, requested amount, SLA age, assigned underwriter.</li>
+          <li><strong>Subscription Health Dashboard:</strong> account, plan, seats used, payment status, renewal date, support risk.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Generation Notes</h2>
+        <p>Code Genie uses read models to generate query endpoints, projection handlers, data transfer objects, dashboards, list pages, detail views, and policy decision inputs. Read models should be shaped around usage, not around aggregate internals.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next block: <a href="query.html">Query</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aggregate Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Aggregate Block</h1>
+      <p>An aggregate is a consistency boundary. It receives commands, enforces business rules, and emits domain events.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="command.html">Command</a></li>
+          <li><a href="domain-event.html">Domain Event</a></li>
+          <li><a href="invariant.html">Invariant</a></li>
+          <li><a href="entity.html">Entity</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use an Aggregate block when a group of data and behaviour must stay consistent together. Aggregates are most valuable where the business has rules such as “an order cannot ship until payment is authorized” or “a claim cannot be approved after it is withdrawn.”</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Name:</strong> business noun, such as <strong>Order</strong>, <strong>Claim</strong>, <strong>Subscription</strong>, or <strong>Route Assignment</strong>.</li>
+          <li><strong>Aggregate identity:</strong> the identifier used by commands and events.</li>
+          <li><strong>Handled commands:</strong> commands this aggregate accepts.</li>
+          <li><strong>Emitted events:</strong> events this aggregate can produce.</li>
+          <li><strong>Invariants:</strong> rules that must always remain true inside the aggregate.</li>
+          <li><strong>Lifecycle states:</strong> allowed states and transitions, if relevant.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Child entities:</strong> entities managed inside the aggregate boundary.</li>
+          <li><strong>Value objects:</strong> descriptive values used by the aggregate.</li>
+          <li><strong>Concurrency rule:</strong> how simultaneous commands should be resolved.</li>
+          <li><strong>Persistence style:</strong> current-state storage or event-sourced storage.</li>
+          <li><strong>Ownership:</strong> product or engineering owner for the aggregate model.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Connections</h2>
+        <ul>
+          <li>Receives <a href="command.html">Commands</a>.</li>
+          <li>Emits <a href="domain-event.html">Domain Events</a>.</li>
+          <li>Contains <a href="entity.html">Entities</a>, <a href="value-object.html">Value Objects</a>, and <a href="invariant.html">Invariants</a>.</li>
+          <li>Belongs to one <a href="bounded-context.html">Bounded Context</a>.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Examples</h2>
+        <h3>Order Aggregate</h3>
+        <ul>
+          <li>Handles: Place Order, Cancel Order, Mark Order Paid.</li>
+          <li>Emits: Order Placed, Order Cancelled, Order Paid.</li>
+          <li>Invariant: An order cannot be cancelled after it has shipped.</li>
+        </ul>
+        <h3>Appointment Aggregate</h3>
+        <ul>
+          <li>Handles: Schedule Appointment, Reschedule Appointment, Cancel Appointment.</li>
+          <li>Emits: Appointment Scheduled, Appointment Rescheduled, Appointment Cancelled.</li>
+          <li>Invariant: A clinician cannot be double-booked for the same time range.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Generation Notes</h2>
+        <p>Code Genie uses aggregate definitions to generate domain models, command decision logic, state transitions, event emission, persistence mapping, and tests around invariants. Keep aggregates small enough to protect one consistency boundary, not an entire business department.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next block: <a href="policy.html">Policy</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

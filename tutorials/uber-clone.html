@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Uber Clone Example | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Uber Clone Example</h1>
+      <p>Deep dive into modeling a ride-hailing system (Uber-like) using Domain-Driven Design, Event Storming, CQRS, and Event Sourcing. No JavaScript; semantic HTML only.</p>
+      <nav aria-label="Tutorial navigation">
+        <ul>
+          <li><a href="index.html">Tutorials</a></li>
+          <li><a href="crm-example.html">CRM Example</a></li>
+          <li><a href="uber-clone.html">Uber Clone</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Overview</h2>
+        <p>Model a ride-hailing platform with Riders, Drivers, Trips, Vehicles, and Payments. The goal is to show a complete lifecycle from ride request to payment, with domain-driven boundaries and event-sourced history.</p>
+      </section>
+
+      <section>
+        <h2>Domain Model</h2>
+        <ul>
+          <li><strong>Aggregates:</strong> Ride</li>
+          <li><strong>Entities:</strong> Rider, Driver (with Vehicle), Ride, Payment</li>
+          <li><strong>Value Objects:</strong> Location, GeoPoint, Fare, Currency</li>
+          <li><strong>Domain Events:</strong> RideRequested, DriverAssigned, RideStarted, RideEnded, RideCancelled, PaymentProcessed</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Commands</h2>
+        <ul>
+          <li>RequestRide</li>
+          <li>AcceptRide</li>
+          <li>StartRide</li>
+          <li>EndRide</li>
+          <li>CancelRide</li>
+          <li>UpdateLocation</li>
+          <li>ProcessPayment</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Domain Events</h2>
+        <ul>
+          <li>RideRequested</li>
+          <li>DriverAssigned</li>
+          <li>RideStarted</li>
+          <li>RideEnded</li>
+          <li>RideCancelled</li>
+          <li>PaymentProcessed</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Aggregates & Rules</h2>
+        <p><strong>Ride</strong> is the aggregate boundary. It enforces business rules like driver availability, surge pricing, ETA calculations, and safety checks (e.g., rider must be within service area, driver must be online).</p>
+      </section>
+
+      <section>
+        <h2>Read Models & Projections</h2>
+        <ul>
+          <li>RideDetails</li>
+          <li>DriverAvailability</li>
+          <li>RideHistory</li>
+          <li>RevenuePerCity</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Policies & Business Rules</h2>
+        <ul>
+          <li> SurgePricingPolicy: increase fare during demand spikes.</li>
+          <li>CancellationPolicy: time-based penalties and refunds.</li>
+          <li>DriverAcceptancePolicy: ensure driver can accept within allowed window.</li>
+          <li>RoutingPolicy: optimize ETA with real-time traffic data.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Integrations</h2>
+        <ul>
+          <li>Maps/Geocoding: pickup/dropoff coordinates</li>
+          <li>Routing: compute optimal routes</li>
+          <li>PaymentGateway: process fare</li>
+          <li>Notifications: push/SMS updates</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Lifecycle Walkthrough</h2>
+        <ol>
+          <li>Rider requests a ride (RequestRide).</li>
+          <li>System matches with a nearby Driver (DriverAssigned).</li>
+          <li>Driver starts the ride (RideStarted); location updates stream in.</li>
+          <li>Ride ends at destination (RideEnded); fare calculated (Fare, PaymentProcessed).</li>
+          <li>Ride history is stored and read models updated.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Sample Payloads</h2>
+        <p>RideRequested payload example (conceptual JSON):</p>
+        <pre><code>
+{
+  "rideId": "ride_12345",
+  "riderId": "rider_9876",
+  "pickup": { "lat": 37.7749, "lng": -122.4194 },
+  "dropoff": { "lat": 37.8044, "lng": -122.2711 },
+  "requestedAt": "2026-04-30T12:34:56Z"
+}
+        </code></pre>
+      </section>
+
+      <section>
+        <h2>Diagram & Illustration</h2>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1527443154391-507e8e0a6a20?auto=format&fit=crop&w=1200&q=60" alt="Ride-hailing architecture diagram" />
+          <figcaption>High-level Uber-like architecture: rider, driver, ride, payments, and maps services.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Data & APIs (Conceptual)</h2>
+        <p>Provide data contracts for core ride flows. All payloads shown are conceptual and for modeling only.</p>
+        <ul>
+          <li><strong>RideRequest:</strong> riderId, pickup, dropoff, requestedAt</li>
+          <li><strong>RideAssignment:</strong> rideId, driverId, estimatedEta</li>
+          <li><strong>RideUpdate:</strong> rideId, location, status</li>
+          <li><strong>PaymentIntent:</strong> rideId, amount, currency, method</li>
+        </ul>
+        <p>Example payload (RideRequest):</p>
+        <pre><code>{
+  "rideId": "ride_9876",
+  "riderId": "rider_1122",
+  "pickup": {"lat": 37.7749, "lng": -122.4194},
+  "dropoff": {"lat": 37.8715, "lng": -122.2730},
+  "requestedAt": "2026-04-30T12:34:56Z"
+}</code></pre>
+      </section>
+
+      <section>
+        <h2>Edge Cases</h2>
+        <ul>
+          <li>Driver unavailability during surge; rescheduling.</li>
+          <li>Rider cancels after a driver is assigned; cancellation fee rules.</li>
+          <li>Multi-city trips; regional pricing considerations.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Testing & Validation (Conceptual)</h2>
+        <ul>
+          <li>Event history verifications: ensure all domain events are emitted in order.</li>
+          <li>Read model projections reflect event stream accurately.</li>
+          <li>Policy gate checks (surge, cancellation) are enforced before command execution.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: refine the Uber Clone with more industry-specific scenarios or extend to multi-city routing.</p>
+    </footer>
+  </article>
+</body>
+</html>

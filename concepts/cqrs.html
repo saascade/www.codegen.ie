@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CQRS | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>CQRS Without Ceremony</h1>
+      <p>CQRS separates operations that change the system from operations that read from it. In Code Genie, that means commands and queries are modelled as different kinds of intent.</p>
+      <nav aria-label="Concept navigation">
+        <ul>
+          <li><a href="index.html">Concepts</a></li>
+          <li><a href="../blocks/command.html">Command block</a></li>
+          <li><a href="../blocks/query.html">Query block</a></li>
+          <li><a href="../blocks/read-model.html">Read Model block</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>The Basic Split</h2>
+        <p>A command changes something. A query asks for information. Keeping that difference visible prevents screens, APIs, and generated code from mixing decision logic with display logic.</p>
+        <ul>
+          <li><strong>Command:</strong> Approve Loan Application.</li>
+          <li><strong>Event:</strong> Loan Application Approved.</li>
+          <li><strong>Query:</strong> Show Applications Awaiting Approval.</li>
+          <li><strong>Read Model:</strong> Underwriter Work Queue.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Why It Helps</h2>
+        <p>Business systems often read data much more often than they change it. They also need different shapes for reading and writing. A command needs the fields required to make a decision. A read model needs the information needed by a person or integration at that moment.</p>
+        <p>For generation, CQRS gives Code Genie a cleaner map: command handlers and aggregate decisions on one side, query APIs and read models on the other.</p>
+      </section>
+
+      <section>
+        <h2>Not Every System Needs Full CQRS</h2>
+        <p>Some generated systems can use a simple shared data store and still benefit from command/query clarity. Others need separate read models, projections, queues, or event-sourced writes. Code Genie can hide much of that implementation detail, but the canvas should still show which operations change state and which operations read state.</p>
+      </section>
+
+      <section>
+        <h2>Good CQRS Candidates</h2>
+        <ul>
+          <li>Task-based user interfaces where users make business decisions.</li>
+          <li>High-read systems such as customer portals, catalogues, dashboards, and operational work queues.</li>
+          <li>Collaborative systems where many people may act on the same business object.</li>
+          <li>Systems where read screens need denormalized, role-specific views.</li>
+          <li>Event-sourced systems where events feed projections.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Modelling Rule Of Thumb</h2>
+        <p>If a block changes the business state, model it as a command that may produce events. If a block only asks for information, model it as a query against a read model. If it both reads and writes, split it so Code Genie can generate a clearer design.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: <a href="event-sourcing.html">Event Sourcing for product teams</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

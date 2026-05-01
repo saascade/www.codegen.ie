@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event Sourcing | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Event Sourcing For Product Teams</h1>
+      <p>Event Sourcing stores the meaningful changes to a system as a sequence of events. Code Genie lets teams model those events visually and generate the technical structure from the model.</p>
+      <nav aria-label="Concept navigation">
+        <ul>
+          <li><a href="index.html">Concepts</a></li>
+          <li><a href="../blocks/domain-event.html">Domain Event block</a></li>
+          <li><a href="../blocks/read-model.html">Read Model block</a></li>
+          <li><a href="../tutorials/generate-and-host.html">Generate and host</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Plain-English Explanation</h2>
+        <p>Most systems store the latest state: the current order status, account balance, claim stage, or appointment time. Event-sourced systems store the facts that led there: <strong>Order Placed</strong>, <strong>Payment Authorized</strong>, <strong>Order Packed</strong>, <strong>Order Shipped</strong>.</p>
+        <p>The generated system can rebuild current views from those events and keep a history of how the state changed. Users do not need to understand event stores, snapshots, rehydration, or projection infrastructure to model the important behaviour.</p>
+      </section>
+
+      <section>
+        <h2>Why Use It</h2>
+        <ul>
+          <li>Audit history is a first-class need.</li>
+          <li>The business asks “how did we get here?” as often as “what is the current state?”</li>
+          <li>Events are useful for integration, analytics, compliance, or customer support.</li>
+          <li>The system needs to rebuild or add new read models from past behaviour.</li>
+          <li>The domain has meaningful lifecycles, not just editable records.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Where It Fits In Code Genie</h2>
+        <p>When an aggregate accepts a command, it can produce one or more domain events. In an event-sourced generated system, those events become the durable record of what happened. Read models are built from events so users still get fast screens, lists, dashboards, and reports.</p>
+      </section>
+
+      <section>
+        <h2>Good Event Examples</h2>
+        <ul>
+          <li><strong>Insurance:</strong> Claim Opened, Evidence Requested, Assessment Completed, Claim Approved, Payment Issued.</li>
+          <li><strong>Healthcare:</strong> Referral Received, Appointment Scheduled, Triage Completed, Care Plan Updated.</li>
+          <li><strong>Commerce:</strong> Cart Checked Out, Payment Authorized, Inventory Reserved, Shipment Dispatched, Return Received.</li>
+          <li><strong>SaaS:</strong> Subscription Started, Seat Added, Payment Failed, Plan Changed, Subscription Cancelled.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>When Not To Select Event Sourcing</h2>
+        <p>Use a simpler persistence style for simple reference data, low-value audit trails, or systems where every change is just an edit to a record. Event Sourcing is powerful when events are meaningful to the business. If the team cannot name meaningful events, the system may not need it.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: <a href="crud-vs-ddd.html">CRUD systems and DDD systems</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

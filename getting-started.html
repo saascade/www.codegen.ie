@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting Started | Code Genie Documentation</title>
+  <link rel="stylesheet" href="css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Getting Started</h1>
+      <p>Use this guide when you want to turn a business process, product idea, or legacy workflow into a Code Genie model that can be reviewed, generated, and hosted.</p>
+      <nav aria-label="Documentation navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="concepts/index.html">Concepts</a></li>
+          <li><a href="blocks/index.html">Building blocks</a></li>
+          <li><a href="tutorials/index.html">Tutorials</a></li>
+          <li><a href="reference/glossary.html">Glossary</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>The Short Version</h2>
+        <ol>
+          <li>Create a canvas for one product, process, or bounded context.</li>
+          <li>Add domain events first: the meaningful things that happen in the business.</li>
+          <li>Add commands before the events: the decisions or actions that try to make those events happen.</li>
+          <li>Add aggregates where business rules must be protected.</li>
+          <li>Add policies for follow-up behaviour, such as sending notifications, creating tasks, or starting another command.</li>
+          <li>Add read models and queries for the information users need to make decisions.</li>
+          <li>Group related flows into bounded contexts.</li>
+          <li>Run model review, fix warnings, generate code, and optionally deploy to SAAScade Cloud.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>First Steps</h2>
+        <p>Begin with quick, concrete examples in Tutorials.</p>
+        <ul>
+          <li><a href="tutorials/hello-world.html">Hello World</a> — learn the basic generation loop with a tiny model.</li>
+          <li><a href="tutorials/todo-list.html">TODO Example</a> — explore CRUD plus simple workflow behavior.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Who Should Be Involved</h2>
+        <p>Code Genie works best when the canvas becomes a shared language between people who understand the business and people who will operate or extend the software.</p>
+        <ul>
+          <li><strong>Product managers</strong> define outcomes, user journeys, acceptance language, and priorities.</li>
+          <li><strong>Domain experts</strong> clarify the real business rules, exceptions, vocabulary, and timing.</li>
+          <li><strong>Software architects</strong> shape bounded contexts, integrations, deployment boundaries, and technical trade-offs.</li>
+          <li><strong>Developers</strong> refine commands, aggregates, read models, validations, and generation settings.</li>
+          <li><strong>Operations and support teams</strong> identify audit, monitoring, manual intervention, and recovery needs.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Start With Events</h2>
+        <p>A domain event is phrased in the past tense because it records something that has happened: <strong>Order Placed</strong>, <strong>Payment Authorized</strong>, <strong>Refund Requested</strong>, <strong>Appointment Rescheduled</strong>. Events are usually the easiest place for business people to begin because they describe observable facts rather than technical structure.</p>
+        <p>Do not worry about perfect order at first. Place events roughly from left to right as a timeline, then move them as the story becomes clearer. The early goal is shared understanding, not tidy architecture.</p>
+      </section>
+
+      <section>
+        <h2>Add Intent With Commands</h2>
+        <p>A command is an attempt to change the system. It is usually named as an imperative verb phrase: <strong>Place Order</strong>, <strong>Approve Claim</strong>, <strong>Schedule Appointment</strong>, <strong>Reserve Inventory</strong>. Commands belong before the event or events they may produce.</p>
+        <p>Prefer commands that describe user intent over field updates. <strong>Approve Claim</strong> is stronger than <strong>Set Claim Status To Approved</strong> because it lets the model capture who can approve, when approval is allowed, and what happens next.</p>
+      </section>
+
+      <section>
+        <h2>Protect Rules With Aggregates</h2>
+        <p>An aggregate is the part of the domain that decides whether a command is valid and produces events when the decision succeeds. For example, an <strong>Order</strong> aggregate might decide whether an order can be cancelled, and a <strong>Policy</strong> aggregate in an insurance domain might decide whether a claim can be opened.</p>
+        <p>Aggregates are not database tables. They are consistency boundaries. Use them when the business has rules that must be true together.</p>
+      </section>
+
+      <section>
+        <h2>Describe Follow-Up Behaviour</h2>
+        <p>Policies react to events. They are useful when the model needs to say, “when this happens, do that.” For example, when <strong>Order Paid</strong> happens, a policy might trigger <strong>Reserve Inventory</strong>. When <strong>Subscription Payment Failed</strong> happens, a policy might trigger <strong>Start Dunning Sequence</strong>.</p>
+        <p>Policies are where workflows become visible. They reduce hidden logic because everyone can see why the next command exists.</p>
+      </section>
+
+      <section>
+        <h2>Add Information For Decisions</h2>
+        <p>Read models and queries describe what users, policies, and external systems need to know. They do not change the system. They answer questions such as “which orders are waiting for approval?” or “what is the customer’s current credit exposure?”</p>
+        <p>Good read models make generated applications feel natural because screens and APIs are based on the questions users actually ask.</p>
+      </section>
+
+      <section>
+        <h2>When CRUD Is Enough</h2>
+        <p>Code Genie can design CRUD-style systems such as a supplier directory, employee skills catalogue, or product reference database. Use CRUD when the work is mostly create, read, update, and delete around simple records.</p>
+        <p>Use deeper DDD modelling when behaviour matters: approvals, scheduling, fulfilment, billing, claims, allocation, compliance, risk, lifecycle rules, cross-team workflows, or anything where “just update the row” hides real business decisions.</p>
+      </section>
+
+      <section>
+        <h2>Ready To Generate</h2>
+        <p>Before generation, review the model for missing owners, ambiguous names, disconnected events, oversized aggregates, and policies with unclear triggers. Code Genie can generate a stronger system when the canvas explains what the business means, not only what data exists.</p>
+        <ul>
+          <li>Use <a href="reference/model-review-checklist.html">Model review checklist</a> before code generation.</li>
+          <li>Use <a href="tutorials/generate-and-host.html">Generate and host a system</a> for the generation and SAAScade Cloud workflow.</li>
+          <li>Use <a href="reference/naming.html">Naming guide</a> to tighten commands, events, and aggregates.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: <a href="tutorials/first-event-storm.html">build your first EventStorming model</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

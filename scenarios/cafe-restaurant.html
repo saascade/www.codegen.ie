@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cafe / Restaurant Scenario | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Cafe / Restaurant Scenario</h1>
+      <p>A scenario exploring frontend (FOH) and backend (BOH) workflows using DDD, CQRS, and Event Sourcing.</p>
+      <nav aria-label="Documentation navigation">
+        <ul>
+          <li><a href="../tutorials/cafe-restaurant.html">Cafe/Restaurant Tutorial</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Context</h2>
+        <p>Customer visits cafe, sits at a table, orders drinks and food, kitchen/back-of-house fulfills the order, and payment is processed. The model tracks tabs, orders, kitchen tickets, and payments.</p>
+      </section>
+
+      <section>
+        <h2>Building Blocks</h2>
+        <ul>
+          <li><strong>Aggregates:</strong> Tab, Order</li>
+          <li><strong>Entities:</strong> Customer, Server, Table, MenuItem, Dish, Drink, KitchenTicket, Payment</li>
+          <li><strong>Domain Events:</strong> TabOpened, TableSeated, OrderPlaced, ItemAddedToOrder, OrderPrepared, DishReady, DishServed, PaymentProcessed, TabClosed</li>
+          <li><strong>Commands:</strong> OpenTab, SeatCustomer, PlaceOrder, AddItemToOrder, StartPreparation, EndPreparation, ServeItem, CloseTab, ProcessPayment</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Lifecycle</h2>
+        <ol>
+          <li>Open a tab for a table.</li>
+          <li>Place drinks and meals on the order.</li>
+          <li>BOH starts preparation; orders progress to ready.</li>
+          <li>FOH serves dishes; customer finishes tabs and pays.</li>
+          <li>Tab closes; revenue recorded.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Policy Examples</h2>
+        <ul>
+          <li>Wait-time SLA: if ETA > 15 minutes, trigger table offer for refills or alternative items.</li>
+          <li>Over-queue policy for kitchen: cap concurrent orders per station.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>References: cafe-restaurant tutorial at Tutorials.</p>
+    </footer>
+  </article>
+</body>
+</html>

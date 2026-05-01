@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Naming Guide | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Naming Guide</h1>
+      <p>Good names improve workshops, reviews, generated code, tests, APIs, and user interfaces.</p>
+      <nav aria-label="Reference navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../blocks/index.html">Building blocks</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+          <li><a href="model-review-checklist.html">Review checklist</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>General Rules</h2>
+        <ul>
+          <li>Use the language of the business, not implementation shorthand.</li>
+          <li>Prefer specific names over generic names.</li>
+          <li>Avoid names that only describe a database operation unless the model is intentionally CRUD.</li>
+          <li>Use the same term consistently inside a bounded context.</li>
+          <li>Use hotspots when two terms may mean different things.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Commands</h2>
+        <p>Name commands as imperative verb phrases.</p>
+        <ul>
+          <li>Good: Approve Claim, Reserve Inventory, Schedule Appointment, Change Subscription Plan.</li>
+          <li>Weak: Claim Approved, Update Record, Save, Submit, Process.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Domain Events</h2>
+        <p>Name events in the past tense because they record facts that happened.</p>
+        <ul>
+          <li>Good: Claim Approved, Inventory Reserved, Appointment Rescheduled, Payment Failed.</li>
+          <li>Weak: Approve Claim, Inventory, Payment, Status Changed.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Aggregates</h2>
+        <p>Name aggregates as business nouns that own decisions and consistency.</p>
+        <ul>
+          <li>Good: Order, Claim, Subscription, Appointment, Route Assignment.</li>
+          <li>Weak: OrderTable, ClaimData, SubscriptionManager, AppointmentService.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Policies</h2>
+        <p>Name policies so the trigger and intent are understandable.</p>
+        <ul>
+          <li>Good: Reserve Inventory After Payment, Suspend Entitlements After Dunning Deadline.</li>
+          <li>Weak: Payment Handler, Policy 1, Background Job, Event Processor.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Read Models And Queries</h2>
+        <p>Name read models around the decision or display they support. Name queries as questions or search actions.</p>
+        <ul>
+          <li>Good read model: Claims Awaiting Review, Customer Order Status, Driver Route View.</li>
+          <li>Good query: Find Available Slots, Show Claims Awaiting Review, Get Account Billing Summary.</li>
+          <li>Weak: ClaimDto, DataView, GetStuff, Search.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Bounded Contexts</h2>
+        <p>Name bounded contexts after business capabilities, not technical layers.</p>
+        <ul>
+          <li>Good: Billing, Fulfilment, Claims Assessment, Entitlements, Dispatch.</li>
+          <li>Weak: Database, Backend, Microservice 1, Shared, Common.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: <a href="model-review-checklist.html">Model review checklist</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

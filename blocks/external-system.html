@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>External System Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>External System Block</h1>
+      <p>An external system is a system outside the generated boundary that sends commands, receives events, answers queries, or provides reference information.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="integration-event.html">Integration Event</a></li>
+          <li><a href="command.html">Command</a></li>
+          <li><a href="query.html">Query</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use an External System block for payment gateways, identity providers, shipping carriers, ERP systems, CRM tools, government APIs, messaging platforms, data warehouses, and partner systems.</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Name:</strong> system or provider name.</li>
+          <li><strong>Relationship:</strong> sends data to Code Genie system, receives data, both, or reference-only.</li>
+          <li><strong>Integration type:</strong> API, webhook, message bus, file import, file export, database view, manual upload, or email.</li>
+          <li><strong>Commands or events exchanged:</strong> what crosses the boundary.</li>
+          <li><strong>Ownership:</strong> team or vendor responsible for the external system.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Authentication method:</strong> API key, OAuth, mTLS, managed identity, SFTP credential, or manual control.</li>
+          <li><strong>Reliability expectation:</strong> synchronous, asynchronous, retryable, or best effort.</li>
+          <li><strong>Failure handling:</strong> timeout, retry, dead-letter, manual review, or compensation command.</li>
+          <li><strong>Data contract owner:</strong> person or team responsible for schema changes.</li>
+          <li><strong>Privacy classification:</strong> whether personal, financial, health, or regulated data crosses the boundary.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Examples</h2>
+        <ul>
+          <li>Payment Gateway authorizes payments and sends Payment Captured webhook.</li>
+          <li>Shipping Carrier receives Create Shipment and publishes Delivery Attempted.</li>
+          <li>Identity Provider supplies user authentication and group claims.</li>
+          <li>ERP receives Invoice Issued integration events.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next block: <a href="bounded-context.html">Bounded Context</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

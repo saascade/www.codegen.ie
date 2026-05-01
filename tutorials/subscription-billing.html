@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Model SaaS Subscription Billing | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Model SaaS Subscription Billing</h1>
+      <p>This tutorial models a subscription lifecycle with entitlements, plan changes, payment failures, and dunning.</p>
+      <nav aria-label="Tutorial navigation">
+        <ul>
+          <li><a href="index.html">Tutorials</a></li>
+          <li><a href="../blocks/policy.html">Policy block</a></li>
+          <li><a href="../blocks/saga.html">Saga block</a></li>
+          <li><a href="../scenarios/software-system-types.html">System types</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Scenario</h2>
+        <p>A SaaS company wants to generate a subscription management system that handles trials, paid plans, seats, entitlements, invoices, failed payments, and cancellation.</p>
+      </section>
+
+      <section>
+        <h2>Events</h2>
+        <ul>
+          <li>Trial Started</li>
+          <li>Subscription Activated</li>
+          <li>Seat Added</li>
+          <li>Plan Changed</li>
+          <li>Invoice Issued</li>
+          <li>Payment Failed</li>
+          <li>Dunning Started</li>
+          <li>Entitlements Suspended</li>
+          <li>Subscription Cancelled</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Aggregates</h2>
+        <ul>
+          <li><strong>Subscription:</strong> plan, lifecycle, renewal date, cancellation state.</li>
+          <li><strong>Account Entitlements:</strong> features and limits available to the account.</li>
+          <li><strong>Invoice:</strong> issued amount, due date, payment state.</li>
+          <li><strong>Dunning Case:</strong> payment recovery workflow and communications.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Commands</h2>
+        <ul>
+          <li>Start Trial</li>
+          <li>Activate Subscription</li>
+          <li>Add Seat</li>
+          <li>Change Plan</li>
+          <li>Issue Invoice</li>
+          <li>Record Payment Failure</li>
+          <li>Start Dunning</li>
+          <li>Suspend Entitlements</li>
+          <li>Cancel Subscription</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Rules</h2>
+        <ul>
+          <li>A subscription cannot be activated without a billing account.</li>
+          <li>A seat cannot be added beyond the account’s plan limit unless overage billing is enabled.</li>
+          <li>A plan downgrade cannot remove features currently required by active commitments without confirmation.</li>
+          <li>Entitlements can only be suspended after the configured dunning window expires.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Policies And Saga</h2>
+        <ul>
+          <li>When Subscription Activated, enable account entitlements.</li>
+          <li>When Plan Changed, recalculate entitlements and billing schedule.</li>
+          <li>When Payment Failed, start dunning if the account is not already in dunning.</li>
+          <li>When Dunning Started, schedule payment retry and send customer notification.</li>
+          <li>Use a <strong>Dunning Process</strong> saga to track retries, notifications, deadlines, recovery, suspension, and cancellation.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Read Models</h2>
+        <ul>
+          <li><strong>Account Subscription Summary:</strong> current plan, status, renewal, seats, entitlements.</li>
+          <li><strong>Billing Timeline:</strong> invoices, payments, failures, refunds, dunning actions.</li>
+          <li><strong>Dunning Work Queue:</strong> accounts needing support intervention.</li>
+          <li><strong>Feature Access View:</strong> entitlements consumed by the product runtime.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next tutorial: <a href="crud-backoffice.html">Model a simple CRUD back-office tool</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,3 +1,2 @@
-# platform.sascade.com
+# Documentation for codegen.ie
 
-[redirects to platform.saascade.com](https://platform.saascade.com)

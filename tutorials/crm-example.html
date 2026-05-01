@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRM Example | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>CRM Example: Custom Customer Relationship Management</h1>
+      <p>Demonstrates modeling a CRM domain with domain events, commands, aggregates, and read models. No JavaScript; semantic HTML only.</p>
+      <nav aria-label="Tutorial navigation">
+        <ul>
+          <li><a href="index.html">Tutorials</a></li>
+          <li><a href="cms-example.html">CMS Example</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Overview</h2>
+        <p>A CRM system typically tracks customers, leads, opportunities, accounts, and activities. This example shows a minimal domain model that supports creating customers, managing contacts, and progressing leads through a sales pipeline.</p>
+      </section>
+
+      <section>
+        <h2>Domain Model</h2>
+        <ul>
+          <li><strong>Aggregates:</strong> Customer</li>
+          <li><strong>Entities:</strong> Customer, Account, Lead, Opportunity, Contact</li>
+          <li><strong>Domain Events:</strong> CustomerCreated, CustomerUpdated, LeadCreated, LeadConverted, OpportunityCreated</li>
+          <li><strong>Value Objects:</strong> Email, PhoneNumber, Address</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Commands</h2>
+        <ul>
+          <li>CreateCustomer</li>
+          <li>UpdateCustomer</li>
+          <li>CreateLead</li>
+          <li>ConvertLeadToOpportunity</li>
+          <li>CreateOpportunity</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Read Models & Projections</h2>
+        <ul>
+          <li>CustomerProfile</li>
+          <li>OpportunitySummary</li>
+          <li>ActivityFeed</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Lifecycle Example</h2>
+        <ol>
+          <li>Create a Customer with basic details</li>
+          <li>Add Contacts and an Account</li>
+          <li>Capture a Lead and convert to Opportunity</li>
+          <li>Move Opportunity to Won/Lost with final status</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Diagram & Illustration</h2>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1515879200009-8b2b8a1b077c?auto=format&fit=crop&w=1200&q=60" alt="CRM workflow illustration" />
+          <figcaption>Illustrative CRM workflow showing customers, leads, opportunities, and activities.</figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: explore advanced CRM patterns or switch to a domain-focused example (eCommerce, finance, etc.).</p>
+    </footer>
+  </article>
+</body>
+</html>

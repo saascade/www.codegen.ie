@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DDD Example Library | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>DDD Example Library</h1>
+      <p>Use these examples to seed real Code Genie models. They focus on business behaviour, not database maintenance.</p>
+      <nav aria-label="Scenario navigation">
+        <ul>
+          <li><a href="index.html">Scenarios</a></li>
+          <li><a href="software-system-types.html">System types</a></li>
+          <li><a href="crud-examples.html">CRUD examples</a></li>
+          <li><a href="../blocks/index.html">Building blocks</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Order Fulfilment</h2>
+        <ul>
+          <li><strong>Commands:</strong> Place Order, Authorize Payment, Reserve Inventory, Release Shipment, Cancel Order.</li>
+          <li><strong>Events:</strong> Order Placed, Payment Authorized, Inventory Reserved, Shipment Released, Order Cancelled.</li>
+          <li><strong>Aggregates:</strong> Order, Payment Authorization, Inventory Reservation, Shipment.</li>
+          <li><strong>Policies:</strong> Reserve inventory after payment; release shipment after inventory reservation.</li>
+          <li><strong>Read models:</strong> Customer Order Status, Fulfilment Work Queue, Order Timeline.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Insurance Claim Settlement</h2>
+        <ul>
+          <li><strong>Commands:</strong> Open Claim, Request Evidence, Assign Assessor, Approve Claim, Issue Settlement.</li>
+          <li><strong>Events:</strong> Claim Opened, Evidence Requested, Assessor Assigned, Claim Approved, Settlement Issued.</li>
+          <li><strong>Aggregates:</strong> Claim, Assessment, Settlement Payment.</li>
+          <li><strong>Policies:</strong> Assign assessor when claim exceeds authority limit; issue settlement after approval.</li>
+          <li><strong>Read models:</strong> Claims Work Queue, Claim Timeline, Settlement Register.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Loan Origination</h2>
+        <ul>
+          <li><strong>Commands:</strong> Submit Application, Run Credit Check, Request Documents, Approve Loan, Decline Loan.</li>
+          <li><strong>Events:</strong> Application Submitted, Credit Check Completed, Documents Requested, Loan Approved, Loan Declined.</li>
+          <li><strong>Aggregates:</strong> Loan Application, Credit Assessment, Document Pack.</li>
+          <li><strong>Policies:</strong> Request documents after conditional approval; escalate high-risk applications.</li>
+          <li><strong>Read models:</strong> Underwriter Queue, Applicant Status, Risk Review Dashboard.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Healthcare Referral Triage</h2>
+        <ul>
+          <li><strong>Commands:</strong> Submit Referral, Triage Referral, Request More Information, Schedule Appointment, Close Referral.</li>
+          <li><strong>Events:</strong> Referral Submitted, Referral Triaged, Information Requested, Appointment Scheduled, Referral Closed.</li>
+          <li><strong>Aggregates:</strong> Referral, Triage Decision, Appointment.</li>
+          <li><strong>Policies:</strong> Schedule urgent referral within target window; notify referrer when information is missing.</li>
+          <li><strong>Read models:</strong> Referral Triage Queue, Patient Referral Status, Urgent Referral Dashboard.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Logistics Dispatch</h2>
+        <ul>
+          <li><strong>Commands:</strong> Create Delivery Job, Assign Driver, Start Route, Capture Proof Of Delivery, Report Delivery Exception.</li>
+          <li><strong>Events:</strong> Delivery Job Created, Driver Assigned, Route Started, Proof Of Delivery Captured, Delivery Exception Reported.</li>
+          <li><strong>Aggregates:</strong> Delivery Job, Route Assignment, Proof Of Delivery.</li>
+          <li><strong>Policies:</strong> Notify customer when driver assigned; open exception case when delivery fails.</li>
+          <li><strong>Read models:</strong> Dispatch Board, Driver Route View, Delivery Exception Queue.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Manufacturing Quality Control</h2>
+        <ul>
+          <li><strong>Commands:</strong> Start Inspection, Record Defect, Quarantine Batch, Approve Rework, Release Batch.</li>
+          <li><strong>Events:</strong> Inspection Started, Defect Recorded, Batch Quarantined, Rework Approved, Batch Released.</li>
+          <li><strong>Aggregates:</strong> Inspection, Batch, Nonconformance, Rework Order.</li>
+          <li><strong>Policies:</strong> Quarantine batch after critical defect; create corrective action after repeated defect.</li>
+          <li><strong>Read models:</strong> Quality Dashboard, Quarantined Batch List, Defect Trend Report.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Permit Application Review</h2>
+        <ul>
+          <li><strong>Commands:</strong> Submit Permit Application, Request Revision, Approve Permit, Schedule Inspection, Revoke Permit.</li>
+          <li><strong>Events:</strong> Permit Application Submitted, Revision Requested, Permit Approved, Inspection Scheduled, Permit Revoked.</li>
+          <li><strong>Aggregates:</strong> Permit Application, Permit, Inspection.</li>
+          <li><strong>Policies:</strong> Schedule inspection after permit approval; notify applicant when revision requested.</li>
+          <li><strong>Read models:</strong> Reviewer Queue, Applicant Permit Status, Inspection Calendar.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Course Enrollment</h2>
+        <ul>
+          <li><strong>Commands:</strong> Enroll Student, Join Waitlist, Drop Course, Offer Waitlist Seat, Confirm Seat.</li>
+          <li><strong>Events:</strong> Student Enrolled, Student Waitlisted, Course Dropped, Waitlist Seat Offered, Seat Confirmed.</li>
+          <li><strong>Aggregates:</strong> Course Offering, Enrollment, Waitlist.</li>
+          <li><strong>Policies:</strong> Offer next waitlist seat when enrollment drops below capacity.</li>
+          <li><strong>Read models:</strong> Student Schedule, Course Roster, Waitlist Status.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Property Maintenance</h2>
+        <ul>
+          <li><strong>Commands:</strong> Report Maintenance Issue, Triage Request, Dispatch Vendor, Confirm Completion, Escalate Overdue Request.</li>
+          <li><strong>Events:</strong> Maintenance Issue Reported, Request Triaged, Vendor Dispatched, Work Completed, Request Escalated.</li>
+          <li><strong>Aggregates:</strong> Maintenance Request, Work Order, Vendor Assignment.</li>
+          <li><strong>Policies:</strong> Dispatch emergency vendor immediately; escalate if SLA timer expires.</li>
+          <li><strong>Read models:</strong> Tenant Request Status, Facilities Work Queue, SLA Breach Dashboard.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Expense Approval</h2>
+        <ul>
+          <li><strong>Commands:</strong> Submit Expense, Approve Expense, Reject Expense, Request Receipt, Reimburse Employee.</li>
+          <li><strong>Events:</strong> Expense Submitted, Expense Approved, Expense Rejected, Receipt Requested, Employee Reimbursed.</li>
+          <li><strong>Aggregates:</strong> Expense Report, Approval Decision, Reimbursement.</li>
+          <li><strong>Policies:</strong> Route high-value expenses to finance; reimburse after approval.</li>
+          <li><strong>Read models:</strong> Manager Approval Queue, Employee Expense Status, Finance Reimbursement Queue.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>IoT Device Incident Response</h2>
+        <ul>
+          <li><strong>Commands:</strong> Register Device, Raise Alert, Assign Technician, Acknowledge Incident, Resolve Incident.</li>
+          <li><strong>Events:</strong> Device Registered, Alert Raised, Technician Assigned, Incident Acknowledged, Incident Resolved.</li>
+          <li><strong>Aggregates:</strong> Device, Incident, Technician Assignment.</li>
+          <li><strong>Policies:</strong> Create incident when severe alert raised; escalate if incident not acknowledged.</li>
+          <li><strong>Read models:</strong> Device Health Dashboard, Incident Queue, Technician Schedule.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Marketplace Escrow</h2>
+        <ul>
+          <li><strong>Commands:</strong> Open Escrow, Confirm Shipment, Release Funds, Raise Dispute, Refund Buyer.</li>
+          <li><strong>Events:</strong> Escrow Opened, Shipment Confirmed, Funds Released, Dispute Raised, Buyer Refunded.</li>
+          <li><strong>Aggregates:</strong> Escrow, Marketplace Order, Dispute Case.</li>
+          <li><strong>Policies:</strong> Release funds after delivery confirmation window; freeze escrow when dispute raised.</li>
+          <li><strong>Read models:</strong> Seller Payout Status, Buyer Protection Case, Escrow Ledger.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next: <a href="crud-examples.html">CRUD example library</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

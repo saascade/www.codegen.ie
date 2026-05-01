@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CMS Example | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>CMS Example: Content Management System</h1>
+      <p>This example demonstrates a minimal, semantic HTML representation of a CMS content item. It shows how a content item can be structured with headings, sections, figures, and metadata without any JavaScript.</p>
+      <nav aria-label="Tutorial navigation">
+        <ul>
+          <li><a href="index.html">Tutorials</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Overview</h2>
+        <p>A CMS (Content Management System) typically stores content items with metadata. This example shows a single article-style content item rendered with semantic HTML elements that describe structure and meaning to both humans and machines.</p>
+      </section>
+
+      <section>
+        <h2>Content Model (CMS Item)</h2>
+        <ul>
+          <li>Title</li>
+          <li>Body / Rich text sections</li>
+          <li>Author</li>
+          <li>Publish date</li>
+          <li>Slug / URL</li>
+          <li>Categories and Tags</li>
+          <li>Media (images, galleries)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Markup Example</h2>
+        <article class="cms-post">
+          <header>
+            <h3>Understanding Content Lifecycle in a CMS</h3>
+            <p class="meta">By Jane Doe • Published <time datetime="2026-04-30">April 30, 2026</time></p>
+          </header>
+          <figure>
+            <img src="https://images.unsplash.com/photo-1520975922284-3f8f6504e312?auto=format&fit=crop&w=1200&q=60" alt="Illustration of a content editor in a CMS" />
+            <figcaption>Editor interface illustrating content items in a CMS (illustrative image).</figcaption>
+          </figure>
+          <section>
+            <h4>Lead</h4>
+            <p>The lifecycle of a content item typically includes drafting, review, approval, and publication. This section demonstrates a semantic structure rather than a UI implementation.</p>
+          </section>
+          <section>
+            <h4>Content Blocks</h4>
+            <p>Title, body sections, media references, and metadata are common blocks used to compose a CMS article.</p>
+          </section>
+          <section>
+            <h4>Metadata</h4>
+            <dl>
+              <dt>Slug</dt><dd>/understanding-content-lifecycle</dd>
+              <dt>Author</dt><dd>Jane Doe</dd>
+              <dt>Categories</dt><dd>Content Management, Architecture</dd>
+              <dt>Tags</dt><dd>CMS, Content Modeling</dd>
+              <dt>Publish date</dt><dd>2026-04-30</dd>
+            </dl>
+          </section>
+        </article>
+      </section>
+
+      <section>
+        <h2>Accessibility and Semantics</h2>
+        <p>Using semantic elements (article, header, section, nav, figure, figcaption, time, dl/dt/dd) helps search engines and assistive technologies understand the content more effectively.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>CMS Example: a semantic HTML representation for content items. No JavaScript required.</p>
+    </footer>
+  </article>
+  </body>
+</html>

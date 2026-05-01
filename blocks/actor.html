@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Actor Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Actor Block</h1>
+      <p>An actor is a person, role, team, organization, or system role that initiates work or makes decisions.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="command.html">Command</a></li>
+          <li><a href="user-interface.html">User Interface</a></li>
+          <li><a href="query.html">Query</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use an Actor block when the model needs to show who initiates a command, asks a query, owns a decision, or receives the outcome. Actors are usually roles, not individual people.</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Name:</strong> role name, such as <strong>Customer</strong>, <strong>Claims Handler</strong>, or <strong>Warehouse Operator</strong>.</li>
+          <li><strong>Type:</strong> human role, team, organization, automated role, or external participant.</li>
+          <li><strong>Responsibilities:</strong> what the actor can decide or do.</li>
+          <li><strong>Commands issued:</strong> commands the actor may initiate.</li>
+          <li><strong>Queries used:</strong> information the actor needs.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Permissions:</strong> actions and data allowed for this actor.</li>
+          <li><strong>Primary interfaces:</strong> portal, back-office screen, mobile app, API, or notification channel.</li>
+          <li><strong>Success measure:</strong> what this actor is trying to accomplish.</li>
+          <li><strong>Exception path:</strong> what happens when the actor cannot complete the task.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Examples</h2>
+        <ul>
+          <li>Customer places an order and views order status.</li>
+          <li>Claims Handler requests evidence and approves low-value claims.</li>
+          <li>Underwriter reviews high-risk loan applications.</li>
+          <li>Warehouse Operator packs shipments and reports shortages.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next block: <a href="user-interface.html">User Interface</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Integration Event Block | Code Genie Documentation</title>
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Integration Event Block</h1>
+      <p>An integration event is a message published across a system or bounded-context boundary.</p>
+      <nav aria-label="Block navigation">
+        <ul>
+          <li><a href="index.html">All blocks</a></li>
+          <li><a href="domain-event.html">Domain Event</a></li>
+          <li><a href="external-system.html">External System</a></li>
+          <li><a href="bounded-context.html">Bounded Context</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>When To Use It</h2>
+        <p>Use an Integration Event block when one generated service, bounded context, or external system needs to notify another that something happened. A domain event may stay inside one context; an integration event is deliberately published outside it.</p>
+      </section>
+
+      <section>
+        <h2>Required Data</h2>
+        <ul>
+          <li><strong>Name:</strong> past-tense phrase stable enough for other systems, such as <strong>Invoice Issued</strong>.</li>
+          <li><strong>Publisher:</strong> context or system that publishes the event.</li>
+          <li><strong>Subscribers:</strong> contexts or systems expected to consume it.</li>
+          <li><strong>Contract payload:</strong> fields included in the public message.</li>
+          <li><strong>Publishing trigger:</strong> domain event, policy, schedule, or external signal that causes publication.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recommended Data</h2>
+        <ul>
+          <li><strong>Schema version:</strong> contract version used by subscribers.</li>
+          <li><strong>Delivery semantics:</strong> at least once, exactly once where supported, or best effort.</li>
+          <li><strong>Retry and dead-letter policy:</strong> failure handling for consumers.</li>
+          <li><strong>Privacy review:</strong> fields that must not leave the context.</li>
+          <li><strong>Compatibility notes:</strong> how payload changes will be rolled out.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Examples</h2>
+        <ul>
+          <li>Invoice Issued from Billing to Accounting.</li>
+          <li>Shipment Dispatched from Fulfilment to Customer Notifications.</li>
+          <li>Customer Risk Rating Changed from Risk to Lending.</li>
+          <li>Subscription Cancelled from Billing to Entitlements.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Next block: <a href="saga.html">Saga or Process Manager</a>.</p>
+    </footer>
+  </article>
+</body>
+</html>
